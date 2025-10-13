@@ -16,12 +16,14 @@
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             overflow: hidden;
             height: 100vh;
+            touch-action: pan-y;
         }
 
         .presentation {
             width: 100%;
             height: 100vh;
             position: relative;
+            overflow: hidden;
         }
 
         .slide {
@@ -30,6 +32,9 @@
             display: none;
             padding: 60px;
             animation: slideIn 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         .slide.active {
@@ -47,6 +52,36 @@
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+
+        .slide.slide-out-left {
+            animation: slideOutLeft 0.3s ease-in-out;
+        }
+
+        .slide.slide-out-right {
+            animation: slideOutRight 0.3s ease-in-out;
         }
 
         .logo-section {
@@ -83,6 +118,12 @@
             border-bottom: 3px solid #5ddbff;
             padding-bottom: 10px;
             display: inline-block;
+        }
+
+        h3 {
+            color: #5ddbff;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
         .content-box {
@@ -155,49 +196,61 @@
             font-size: 24px;
         }
 
-        /* Updated button styles for top corners */
-        .nav-button {
-            position: fixed;
-            top: 20px;
-            background: rgba(93, 219, 255, 0.3);
-            color: white;
-            border: 2px solid #5ddbff;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+        /* Contact Info Styles */
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
         }
 
-        .nav-button:hover {
-            background: #5ddbff;
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(93, 219, 255, 0.4);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(93, 219, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #5ddbff;
         }
 
-        .nav-button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .contact-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #5ddbff;
         }
 
-        #prevBtn {
-            left: 20px;
+        .contact-text {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 500;
         }
 
-        #nextBtn {
-            right: 20px;
+        .contact-link {
+            color: #5ddbff;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
+        .contact-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Slide Counter */
         .slide-counter {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             color: #5ddbff;
             font-size: 18px;
             font-weight: 600;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(93, 219, 255, 0.3);
+            z-index: 1000;
         }
 
         .highlight {
@@ -210,6 +263,40 @@
             font-size: 22px;
             margin-top: 20px;
             line-height: 1.6;
+        }
+
+        /* Swipe indicator for mobile */
+        .swipe-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(93, 219, 255, 0.7);
+            font-size: 14px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .swipe-hint .arrow {
+            display: inline-block;
+            margin: 0 5px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(-5px);
+            }
+            60% {
+                transform: translateX(-3px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -240,6 +327,10 @@
                 font-size: 26px;
             }
 
+            h3 {
+                font-size: 22px;
+            }
+
             .content-box {
                 padding: 20px;
             }
@@ -261,24 +352,21 @@
                 padding: 10px;
             }
 
-            .nav-button {
-                top: 10px;
-                padding: 8px 15px;
-                font-size: 14px;
+            .contact-item {
+                padding: 12px;
             }
 
-            #prevBtn {
-                left: 10px;
-            }
-
-            #nextBtn {
-                right: 10px;
+            .contact-text {
+                font-size: 16px;
             }
 
             .slide-counter {
-                position: static;
-                margin-top: 15px;
-                text-align: center;
+                top: 15px;
+                font-size: 16px;
+            }
+
+            .swipe-hint {
+                display: block;
             }
         }
 
@@ -295,19 +383,32 @@
                 font-size: 24px;
             }
 
+            h3 {
+                font-size: 20px;
+            }
+
             .feature-card {
                 padding: 15px;
             }
 
-            .nav-button {
-                padding: 6px 12px;
-                font-size: 12px;
+            .contact-text {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="presentation">
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+    </div>
+
+    <!-- Swipe Hint for Mobile -->
+    <div class="swipe-hint">
+        <span class="arrow">←</span> Swipe to navigate <span class="arrow">→</span>
+    </div>
+
+    <div class="presentation" id="presentation">
         <!-- Slide 1: Title -->
         <div class="slide active">
             <div class="logo-section">
@@ -382,8 +483,8 @@
                 <h2>💡 Key Benefits</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>⏱️ Save Time</h3>
-                        <p>Reduce manual tasks by 70% with automation and generation tools</p>
+                        <h3>🚀 Faster Deployment</h3>
+                        <p>Accelerate release cycles with one-click deployment</p>
                     </div>
                     <div class="feature-card">
                         <h3>🎯 Increase Accuracy</h3>
@@ -401,9 +502,10 @@
                         <h3>🔒 Improved Reliability</h3>
                         <p>Proactive monitoring and quick error resolution</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>🚀 Faster Deployment</h3>
-                        <p>Accelerate release cycles with one-click deployment</p>
+                    
+					<div class="feature-card">
+                        <h3>⏱️ Save Time</h3>
+                        <p>Reduce manual tasks by 70% with automation and generation tools</p>
                     </div>
                 </div>
             </div>
@@ -423,37 +525,113 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Slide Counter -->
-    <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">6</span>
-    </div>
+        <!-- Slide 7: Contact Us -->
+        <div class="slide">
+            <div class="content-box" style="text-align: center;">
+                <h2>📞 Contact Us</h2>
+                <p class="subtitle" style="margin: 30px 0;">Get in touch with us to learn more about IntSphere</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            Email: <a href="mailto:kunal@intsphere.com" class="contact-link">kunal@intsphere.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            Phone: <a href="tel:+918149434549" class="contact-link">+91 8149434549</a>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- New Top Corner Navigation Buttons -->
-    <button id="prevBtn" class="nav-button" onclick="changeSlide(-1)">← Previous</button>
-    <button id="nextBtn" class="nav-button" onclick="changeSlide(1)">Next →</button>
+                <div style="margin-top: 50px;">
+                    <h3>Let's Transform Your OIC Experience Together!</h3>
+                    <p class="subtitle" style="margin-top: 20px;">
+                        Reach out to schedule a demo or discuss how IntSphere can benefit your organization
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        let startX = 0;
+        let endX = 0;
+        const swipeThreshold = 50; // Minimum swipe distance in pixels
         
+        // Initialize counter
         document.getElementById('totalSlides').textContent = totalSlides;
 
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
+        function showSlide(n, direction = 1) {
+            // Add slide out animation
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.add(direction === 1 ? 'slide-out-left' : 'slide-out-right');
+            }
             
-            document.getElementById('currentSlide').textContent = currentSlide + 1;
-            
-            document.getElementById('prevBtn').disabled = currentSlide === 0;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            setTimeout(() => {
+                // Remove all active and animation classes
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'slide-out-left', 'slide-out-right');
+                });
+                
+                // Update current slide
+                currentSlide = (n + totalSlides) % totalSlides;
+                slides[currentSlide].classList.add('active');
+                
+                // Update counter
+                document.getElementById('currentSlide').textContent = currentSlide + 1;
+            }, 150);
         }
 
         function changeSlide(direction) {
-            showSlide(currentSlide + direction);
+            showSlide(currentSlide + direction, direction);
+        }
+
+        // Touch events for swipe
+        document.getElementById('presentation').addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        });
+
+        document.getElementById('presentation').addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        // Mouse events for desktop swipe simulation
+        document.getElementById('presentation').addEventListener('mousedown', (e) => {
+            startX = e.screenX;
+            document.getElementById('presentation').addEventListener('mousemove', handleMouseMove);
+        });
+
+        document.getElementById('presentation').addEventListener('mouseup', (e) => {
+            endX = e.screenX;
+            handleSwipe();
+            document.getElementById('presentation').removeEventListener('mousemove', handleMouseMove);
+        });
+
+        function handleMouseMove(e) {
+            endX = e.screenX;
+        }
+
+        function handleSwipe() {
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    // Swipe left - next slide
+                    changeSlide(1);
+                } else {
+                    // Swipe right - previous slide
+                    changeSlide(-1);
+                }
+            }
         }
 
         // Keyboard navigation
