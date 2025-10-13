@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntSphere Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            padding: 60px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-text {
+            font-size: 72px;
+            font-weight: 700;
+            color: #5ddbff;
+            text-shadow: 0 0 30px rgba(93, 219, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: #ffffff;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        h1 {
+            color: #5ddbff;
+            font-size: 48px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(93, 219, 255, 0.3);
+        }
+
+        h2 {
+            color: #5ddbff;
+            font-size: 36px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #5ddbff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: rgba(93, 219, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #5ddbff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(93, 219, 255, 0.3);
+        }
+
+        .feature-card h3 {
+            color: #5ddbff;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .feature-list li {
+            color: #ffffff;
+            font-size: 20px;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(93, 219, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #5ddbff;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: rgba(93, 219, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #5ddbff;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        button {
+            background: rgba(93, 219, 255, 0.3);
+            color: white;
+            border: 2px solid #5ddbff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        button:hover {
+            background: #5ddbff;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(93, 219, 255, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: #5ddbff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: #5ddbff;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            font-size: 22px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="logo-section">
+                <div class="logo-text">IntSphere</div>
+                <div class="tagline">All-in-One Platform for OIC Excellence</div>
+            </div>
+            <div class="content-box" style="text-align: center;">
+                <h1>Transform Your OIC Experience</h1>
+                <p class="subtitle">Comprehensive monitoring, deployment, and development tools in one unified platform</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Platform Overview -->
+        <div class="slide">
+            <div class="content-box">
+                <h2>What is IntSphere?</h2>
+                <p class="subtitle">IntSphere is a comprehensive platform designed to streamline and enhance your Oracle Integration Cloud (OIC) operations.</p>
+                <div class="feature-grid" style="margin-top: 40px;">
+                    <div class="feature-card">
+                        <h3>🎯 Unified Dashboard</h3>
+                        <p>Monitor all critical aspects of OIC from a single, intuitive interface</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Accelerated Development</h3>
+                        <p>Auto-generate documentation, tests, and deployment artifacts</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 Smart Automation</h3>
+                        <p>One-click deployment and GitHub integration for seamless workflows</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Advanced Monitoring</h3>
+                        <p>Real-time tracking, error management, and team collaboration tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Development Features -->
+        <div class="slide">
+            <div class="content-box">
+                <h2>🚀 Development Features</h2>
+                <ul class="feature-list">
+                    <li><span class="highlight">One-Click Deployment:</span> Deploy integrations instantly with automated processes</li>
+                    <li><span class="highlight">TDD Generation:</span> Automatic Technical Design Document creation</li>
+                    <li><span class="highlight">Flow Diagram Generation:</span> Visual representation of integration flows</li>
+                    <li><span class="highlight">Postman Collection:</span> Auto-generate API collections for testing</li>
+                    <li><span class="highlight">Test Case Generation:</span> Automated Postman test cases at your fingertips</li>
+                    <li><span class="highlight">GitHub Integration:</span> Seamless version control for OIC artifacts</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Monitoring Features -->
+        <div class="slide">
+            <div class="content-box">
+                <h2>📡 Monitoring & Management</h2>
+                <ul class="feature-list">
+                    <li><span class="highlight">Real-Time Monitoring:</span> Track integration health and performance</li>
+                    <li><span class="highlight">Functional Grouping:</span> Organize integrations by business functionality</li>
+                    <li><span class="highlight">Error Assignment:</span> Delegate errored integrations to support team members</li>
+                    <li><span class="highlight">Quick Resubmit:</span> Resubmit failed integrations with one click</li>
+                    <li><span class="highlight">Teams Integration:</span> Send run details directly to Microsoft Teams</li>
+                    <li><span class="highlight">Ticketing System:</span> Create support tickets instantly from errors</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Key Benefits -->
+        <div class="slide">
+            <div class="content-box">
+                <h2>💡 Key Benefits</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>⏱️ Save Time</h3>
+                        <p>Reduce manual tasks by 70% with automation and generation tools</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎯 Increase Accuracy</h3>
+                        <p>Eliminate human errors with automated documentation and testing</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👥 Better Collaboration</h3>
+                        <p>Streamline team workflows with assignment and notification features</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📈 Enhanced Visibility</h3>
+                        <p>Comprehensive dashboard for complete OIC oversight</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔒 Improved Reliability</h3>
+                        <p>Proactive monitoring and quick error resolution</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🚀 Faster Deployment</h3>
+                        <p>Accelerate release cycles with one-click deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Call to Action -->
+        <div class="slide">
+            <div class="logo-section">
+                <div class="logo-text">IntSphere</div>
+            </div>
+            <div class="content-box" style="text-align: center;">
+                <h2>Ready to Transform Your OIC Operations?</h2>
+                <p class="subtitle" style="margin: 30px 0;">Join the future of OIC management with IntSphere</p>
+                <div style="margin-top: 50px;">
+                    <h3 style="color: #5ddbff; font-size: 28px; margin-bottom: 20px;">Get Started Today</h3>
+                    <p style="color: #ffffff; font-size: 20px;">Experience the power of unified OIC platform management</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">6</span>
+    </div>
+
+    <div class="navigation">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
