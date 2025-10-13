@@ -208,6 +208,95 @@
             margin-top: 20px;
             line-height: 1.6;
         }
+		@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+        padding-bottom: 80px;
+    }
+
+    .slide {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .logo-text {
+        font-size: 48px;
+    }
+
+    .tagline {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .content-box {
+        padding: 20px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card h3 {
+        font-size: 18px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+    .feature-list li {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .navigation {
+        position: static;
+        margin-top: 30px;
+        justify-content: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .slide-counter {
+        position: static;
+        margin-top: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 36px;
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    .feature-card {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+}
     </style>
 </head>
 <body>
