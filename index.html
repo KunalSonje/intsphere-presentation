@@ -91,6 +91,26 @@
             width: 100%;
             max-height: 100%;
             overflow-y: auto;
+            overflow-x: hidden;
+            padding-bottom: 20px;
+        }
+
+        .slide-inner::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .slide-inner::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .slide-inner::-webkit-scrollbar-thumb {
+            background: rgba(93, 219, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .slide-inner::-webkit-scrollbar-thumb:hover {
+            background: rgba(93, 219, 255, 0.7);
         }
 
         .logo-section {
@@ -298,17 +318,19 @@
         /* Swipe indicator for mobile */
         .swipe-hint {
             position: fixed;
-            bottom: 20px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             color: rgba(93, 219, 255, 0.7);
-            font-size: 14px;
+            font-size: 12px;
             text-align: center;
             background: rgba(0, 0, 0, 0.3);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             display: none;
+            z-index: 1000;
+            pointer-events: none;
         }
 
         .swipe-hint .arrow {
@@ -337,7 +359,7 @@
 
         @media (max-width: 768px) {
             .slide {
-                padding: 60px 15px 15px 15px;
+                padding: 70px 15px 80px 15px;
             }
 
             .slide-counter {
@@ -349,6 +371,11 @@
             .logo-container {
                 flex-direction: column;
                 gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .logo-section {
+                margin-bottom: 20px;
             }
 
             .logo-text {
@@ -373,12 +400,14 @@
 
             .content-box {
                 padding: 20px;
+                margin-bottom: 15px;
             }
 
             .feature-grid,
             .feature-grid.benefits-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
+                margin-bottom: 20px;
             }
 
             .feature-card {
@@ -581,7 +610,7 @@
                             <h3>🚀 Faster Deployment</h3>
                             <p>Accelerate release cycles with one-click deployment</p>
                         </div>
-						 <div class="feature-card">
+						  <div class="feature-card">
                             <h3>📱 Mobile Friendly</h3>
                             <p>Access and manage OIC operations on-the-go from any device</p>
                         </div>
@@ -605,7 +634,7 @@
                             <h3>⏱️ Save Time</h3>
                             <p>Reduce manual tasks by 70% with automation and generation tools</p>
                         </div>
-                       
+                      
                     </div>
                 </div>
             </div>
