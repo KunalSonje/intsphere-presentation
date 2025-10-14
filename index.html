@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="Logo.png">
     <title>IntSphere Platform</title>
     <style>
         * {
@@ -12,7 +13,7 @@
         }
 
         body {
-            font-family: Tahoma,'Segoe UI',  Geneva, Verdana, sans-serif;
+            font-family: Georgia,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             overflow: hidden;
             height: 100vh;
@@ -25,7 +26,11 @@
             position: relative;
             overflow: hidden;
         }
-
+		.logo-img {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(93, 219, 255, 0.5));
+        }
         .slide {
             width: 100%;
             height: 100%;
@@ -113,6 +118,109 @@
             background: rgba(93, 219, 255, 0.7);
         }
 
+     
+		/* Hamburger Menu Styles */
+		.hamburger-menu {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			z-index: 1001;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 30px;
+			height: 24px; /* Increased from 21px to 24px */
+			cursor: pointer;
+			background: rgba(255, 255, 255, 0.3);
+			backdrop-filter: blur(10px);
+			padding: 8px; /* Reduced padding to give more space */
+			border-radius: 8px;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+		}
+
+		.hamburger-menu span {
+			display: block;
+			height: 3px;
+			width: 100%;
+			background-color: #ffffff;
+			border-radius: 3px;
+			transition: all 0.3s ease;
+		}
+
+		.hamburger-menu.active span:nth-child(1) {
+			transform: translateY(10px) rotate(45deg); /* Adjusted from 9px to 10px */
+		}
+
+		.hamburger-menu.active span:nth-child(2) {
+			opacity: 0;
+		}
+
+		.hamburger-menu.active span:nth-child(3) {
+			transform: translateY(-10px) rotate(-45deg); /* Adjusted from -9px to -10px */
+		}
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+            border-left: 1px solid rgba(93, 219, 255, 0.2);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(93, 219, 255, 0.1);
+            border-left: 4px solid #5ddbff;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            background: rgba(93, 219, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .mobile-nav-overlay.active {
+            display: block;
+        }
+
         .logo-section {
             text-align: center;
             margin-bottom: 30px;
@@ -145,6 +253,11 @@
             .static-logo {
                 width: 60px;
                 height: 60px;
+            }
+            
+            /* Show hamburger menu on mobile */
+            .hamburger-menu {
+                display: flex;
             }
         }
 
@@ -536,6 +649,29 @@
     </style>
 </head>
 <body>
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#" data-slide="0" class="nav-link">Home</a></li>
+            <li><a href="#" data-slide="1" class="nav-link">Platform Overview</a></li>
+            <li><a href="#" data-slide="2" class="nav-link">Development Features</a></li>
+            <li><a href="#" data-slide="3" class="nav-link">Monitoring & Management</a></li>
+            <li><a href="#" data-slide="4" class="nav-link">Key Benefits</a></li>
+            <li><a href="#" data-slide="5" class="nav-link">Get Started</a></li>
+            <li><a href="#" data-slide="6" class="nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay for mobile nav -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
     <!-- Slide Counter -->
     <div class="slide-counter">
         <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
@@ -742,7 +878,7 @@
                 <div class="logo-section">
                     <div class="logo-with-text">
                        
-                        
+                        <img src="Logo.png" alt="IntSphere Logo" class="logo-img">
                         <div class="logo-text">IntSphere</div>
                     </div>
                 </div>
@@ -869,6 +1005,12 @@
         let endX = 0;
         const swipeThreshold = 50;
         
+        // Hamburger menu elements
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const navLinks = document.querySelectorAll('.mobile-nav .nav-link');
+        
         document.getElementById('totalSlides').textContent = totalSlides;
 
         function showSlide(n, direction = 1) {
@@ -885,11 +1027,52 @@
                 slides[currentSlide].classList.add('active');
                 
                 document.getElementById('currentSlide').textContent = currentSlide + 1;
+                
+                // Update active nav link
+                updateActiveNavLink();
             }, 150);
         }
 
         function changeSlide(direction) {
             showSlide(currentSlide + direction, direction);
+        }
+
+        // Hamburger menu toggle
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+        });
+
+        // Close mobile nav when overlay is clicked
+        mobileNavOverlay.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+        });
+
+        // Navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const slideIndex = parseInt(link.getAttribute('data-slide'));
+                showSlide(slideIndex);
+                
+                // Close mobile nav after selection
+                hamburgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+            });
+        });
+
+        // Update active nav link
+        function updateActiveNavLink() {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (parseInt(link.getAttribute('data-slide')) === currentSlide) {
+                    link.classList.add('active');
+                }
+            });
         }
 
         document.getElementById('presentation').addEventListener('touchstart', (e) => {
@@ -934,6 +1117,7 @@
         });
 
         showSlide(0);
+        updateActiveNavLink();
     </script>
 </body>
 </html>
