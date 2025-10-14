@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntSphere - Oracle Integration Cloud Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>IntSphere Platform</title>
     <style>
         * {
             margin: 0;
@@ -12,1170 +11,929 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #1e3c72;
-            --secondary: #2a5298;
-            --accent: #5ddbff;
-            --light-blue: #e8f4ff;
-            --dark-blue: #0f2a5c;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-        }
-
         body {
-            font-family: Georgia,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: Tahoma,'Segoe UI',  Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            overflow: hidden;
+            height: 100vh;
+            touch-action: pan-y;
         }
 
-        /* Header & Navigation */
-        header {
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
+        .presentation {
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            filter: drop-shadow(0 0 10px rgba(93, 219, 255, 0.5));
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 0.7rem;
-            align-items: center;
-        }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            white-space: nowrap;
-        }
-
-        nav ul li a.nav-link {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        nav ul li a.nav-link:hover {
-            color: var(--accent);
-            background: rgba(93, 219, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent);
-            box-shadow: 0 5px 20px rgba(93, 219, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(93, 219, 255, 0.6);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--dark-blue);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 100px 30px 30px;
-                transition: all 0.3s ease;
-                border-left: 1px solid rgba(93, 219, 255, 0.2);
-                gap: 0;
-                z-index: 999;
-                overflow-y: auto;
-            }
-
-            nav ul.active {
-                right: 0;
-            }
-
-            nav ul li {
-                margin: 0.5rem 0;
-                width: 100%;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                width: 100%;
-                font-size: 1.1rem;
-            }
-
-            nav ul li a.btn {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            /* Overlay when menu is open */
-            .nav-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 998;
-                display: none;
-            }
-
-            .nav-overlay.active {
-                display: block;
-            }
-        }
-
-        /* Rest of your existing CSS remains the same */
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 30px rgba(93, 219, 255, 0.5);
-            background: linear-gradient(135deg, var(--accent) 0%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.0rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.3);
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
+            height: 100vh;
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .slide {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(93, 219, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--accent);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .feature-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Consulting Section */
-        .consulting {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .consulting-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .consulting-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .consulting-text p {
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .consulting-services {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .service-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-        }
-
-        .service-item:hover {
-            transform: translateX(10px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-item h4 {
-            color: var(--accent);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.2rem;
-        }
-
-        .service-item h4 i {
-            color: var(--accent);
-            text-shadow: 0 0 10px rgba(93, 219, 255, 0.5);
-        }
-
-        .service-item p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Platform Section */
-        .platform {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
-        }
-
-        .platform-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .stat-text {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .service-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
-            text-align: center;
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .contact::before {
-            content: '';
+            display: none;
+            padding: 40px 60px;
+            animation: slideIn 0.5s ease-in-out;
             position: absolute;
             top: 0;
             left: 0;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+
+        .slide.slide-out-left {
+            animation: slideOutLeft 0.3s ease-in-out;
+        }
+
+        .slide.slide-out-right {
+            animation: slideOutRight 0.3s ease-in-out;
+        }
+
+        .slide-inner {
+            max-width: 1400px;
+            margin: 0 auto;
             width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
+            max-height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-bottom: 20px;
         }
 
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
-            position: relative;
-            z-index: 1;
+        .slide-inner::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .contact p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-item {
+        .slide-inner::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(93, 219, 255, 0.2);
-            transition: all 0.3s ease;
+            border-radius: 10px;
         }
 
-        .contact-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        .slide-inner::-webkit-scrollbar-thumb {
+            background: rgba(93, 219, 255, 0.5);
+            border-radius: 10px;
         }
 
-        .contact-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(93, 219, 255, 0.5);
+        .slide-inner::-webkit-scrollbar-thumb:hover {
+            background: rgba(93, 219, 255, 0.7);
         }
 
-        .contact-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .contact-item p {
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-
-        .contact-link {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            color: var(--text-light);
-            text-shadow: 0 0 10px rgba(93, 219, 255, 0.5);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-blue);
-            padding: 80px 0 30px;
-            border-top: 1px solid rgba(93, 219, 255, 0.2);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
             position: relative;
-            padding-bottom: 10px;
         }
 
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
+        .logo-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-with-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .static-logo {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 20px rgba(77, 217, 255, 0.6));
+        }
+
+        @media (max-width: 768px) {
+            .static-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        #bannerSphere {
+            filter: drop-shadow(0 0 20px rgba(77, 217, 255, 0.6));
+        }
+
+        .logo-text {
+            font-size: 60px;
+            font-weight: 700;
+            color: #5ddbff;
+            text-shadow: 0 0 30px rgba(93, 219, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: #ffffff;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        h1 {
+            color: #5ddbff;
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(93, 219, 255, 0.3);
+        }
+
+        h2 {
+            color: #5ddbff;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #5ddbff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            color: #5ddbff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .content-box {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--text-light);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(93, 219, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
         }
 
-        .social-links a:hover {
-            background: var(--accent);
-            color: var(--primary);
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .feature-grid.benefits-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .feature-card {
+            background: rgba(93, 219, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #5ddbff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(93, 219, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(93, 219, 255, 0.3);
         }
 
-        .footer-bottom {
+        .feature-card h3 {
+            color: #5ddbff;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #e0e0e0;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .feature-list li {
+            color: #ffffff;
+            font-size: 18px;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: rgba(93, 219, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #5ddbff;
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            background: rgba(93, 219, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #5ddbff;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        /* Contact Info Styles */
+        .contact-info {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            margin-top: 30px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .consulting-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(93, 219, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #5ddbff;
+        }
 
-            nav ul {
-                gap: 1rem;
+        .contact-icon {
+            font-size: 22px;
+            margin-right: 15px;
+            color: #5ddbff;
+        }
+
+        .contact-text {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .contact-link {
+            color: #5ddbff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #5ddbff;
+            font-size: 16px;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(93, 219, 255, 0.3);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .highlight {
+            color: #5ddbff;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            font-size: 20px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
+        /* Swipe indicator for mobile */
+        .swipe-hint {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(93, 219, 255, 0.7);
+            font-size: 12px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: none;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .swipe-hint .arrow {
+            display: inline-block;
+            margin: 0 5px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(-5px);
+            }
+            60% {
+                transform: translateX(-3px);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .feature-grid.benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 100px 0 60px;
+            .slide {
+                padding: 70px 15px 80px 15px;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .slide-counter {
+                top: 10px;
+                font-size: 14px;
+                padding: 5px 12px;
             }
 
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
+            .logo-container {
                 flex-direction: column;
-                align-items: center;
+                gap: 10px;
+                margin-bottom: 15px;
             }
 
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 300px;
+            .logo-with-text {
+                flex-direction: column;
+                gap: 10px;
             }
 
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-                font-size: 0.85rem;
-            }
-            
-            .feature-card, .service-card {
-                padding: 30px 20px;
-            }
-            
-            .contact h2 {
-                font-size: 2.2rem;
+            .logo-section {
+                margin-bottom: 20px;
             }
 
             .logo-text {
-                font-size: 1.5rem;
+                font-size: 40px;
             }
 
-            .logo-img {
-                width: 40px;
-                height: 40px;
+            .tagline {
+                font-size: 18px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .content-box {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+
+            .feature-grid,
+            .feature-grid.benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .feature-card {
+                padding: 15px;
+            }
+
+            .feature-card h3 {
+                font-size: 18px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+            .feature-list li {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .contact-item {
+                padding: 10px;
+            }
+
+            .contact-text {
+                font-size: 15px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .swipe-hint {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 32px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            h1, h2 {
+                font-size: 22px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .feature-list li {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .slide {
+                padding: 30px 40px;
+            }
+
+            .logo-text {
+                font-size: 50px;
+            }
+
+            .tagline {
+                font-size: 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .content-box {
+                padding: 25px;
+            }
+
+            .feature-card {
+                padding: 15px;
+            }
+
+            .feature-list li {
+                font-size: 16px;
+                padding: 10px;
+                margin: 6px 0;
+            }
+
+            .subtitle {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="Logo.png" alt="IntSphere Logo" class="logo-img">
-                <div class="logo-text">IntSphere</div>
-            </div>
-            <button class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#features" class="nav-link">Features</a></li>
-                    <li><a href="#consulting" class="nav-link">Consulting</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#platform" class="nav-link">Platform</a></li>
-                    <li><a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a></li>
-                    <li><a href="#contact" class="btn">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <!-- Mobile Navigation Overlay -->
-        <div class="nav-overlay" id="navOverlay"></div>
-    </header>
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+    </div>
 
-    <!-- Rest of your HTML content remains exactly the same -->
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Transform Your Oracle Integration Cloud (OIC) Experience</h1>
-            <p>Comprehensive monitoring, deployment, and productivity improvement tools in one unified platform for Oracle Integration Cloud excellence</p>
-            <div class="hero-buttons">
-                <a href="#consulting" class="btn">Get Started Today</a>
-                <a href="https://presentation.intsphere.com/" class="btn btn-outline">View Presentation</a>
+    <!-- Swipe Hint for Mobile -->
+    <div class="swipe-hint">
+        <span class="arrow">←</span> Swipe to navigate <span class="arrow">→</span>
+    </div>
+
+    <div class="presentation" id="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-inner">
+                <div class="logo-section">
+                    <div class="logo-with-text">
+                        <!-- Static spherical logo SVG -->
+                        <svg class="static-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect width="200" height="200" fill="#1e3c72"/>
+                            
+                            <!-- Define glow filter -->
+                            <defs>
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                
+                                <radialGradient id="nodeGradient">
+                                    <stop offset="0%" style="stop-color:#5ddbff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#4dd9ff;stop-opacity:0.8" />
+                                </radialGradient>
+                            </defs>
+                            
+                            <!-- Latitude lines (horizontal circles) -->
+                            <ellipse cx="100" cy="100" rx="70" ry="70" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.3"/>
+                            <ellipse cx="100" cy="100" rx="70" ry="50" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.4"/>
+                            <ellipse cx="100" cy="100" rx="70" ry="30" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.5"/>
+                            <ellipse cx="100" cy="100" rx="70" ry="10" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.6"/>
+                            
+                            <!-- Longitude lines (vertical curves) -->
+                            <ellipse cx="100" cy="100" rx="70" ry="70" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.3"/>
+                            <ellipse cx="100" cy="100" rx="50" ry="70" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.4"/>
+                            <ellipse cx="100" cy="100" rx="30" ry="70" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.5"/>
+                            <ellipse cx="100" cy="100" rx="10" ry="70" fill="none" stroke="#4dd9ff" stroke-width="1.5" opacity="0.6"/>
+                            
+                            <!-- Meridian line (center vertical) -->
+                            <line x1="100" y1="30" x2="100" y2="170" stroke="#5ddbff" stroke-width="2" opacity="0.7"/>
+                            
+                            <!-- Equator line (center horizontal) -->
+                            <line x1="30" y1="100" x2="170" y2="100" stroke="#5ddbff" stroke-width="2" opacity="0.7"/>
+                            
+                            <!-- Connection nodes on equator -->
+                            <circle cx="30" cy="100" r="6" fill="url(#nodeGradient)" opacity="0.6" filter="url(#glow)"/>
+                            <circle cx="60" cy="100" r="7" fill="url(#nodeGradient)" opacity="0.8" filter="url(#glow)"/>
+                            <circle cx="140" cy="100" r="7" fill="url(#nodeGradient)" opacity="0.8" filter="url(#glow)"/>
+                            <circle cx="170" cy="100" r="6" fill="url(#nodeGradient)" opacity="0.6" filter="url(#glow)"/>
+                            
+                            <!-- Connection nodes on meridians -->
+                            <circle cx="100" cy="30" r="6" fill="url(#nodeGradient)" opacity="0.6" filter="url(#glow)"/>
+                            <circle cx="100" cy="60" r="7" fill="url(#nodeGradient)" opacity="0.8" filter="url(#glow)"/>
+                            <circle cx="100" cy="140" r="7" fill="url(#nodeGradient)" opacity="0.8" filter="url(#glow)"/>
+                            <circle cx="100" cy="170" r="6" fill="url(#nodeGradient)" opacity="0.6" filter="url(#glow)"/>
+                            
+                            <!-- Diagonal nodes for network effect -->
+                            <circle cx="55" cy="55" r="6" fill="url(#nodeGradient)" opacity="0.7" filter="url(#glow)"/>
+                            <circle cx="145" cy="55" r="6" fill="url(#nodeGradient)" opacity="0.7" filter="url(#glow)"/>
+                            <circle cx="55" cy="145" r="6" fill="url(#nodeGradient)" opacity="0.7" filter="url(#glow)"/>
+                            <circle cx="145" cy="145" r="6" fill="url(#nodeGradient)" opacity="0.7" filter="url(#glow)"/>
+                            
+                            <!-- Network connection lines -->
+                            <line x1="55" y1="55" x2="100" y2="60" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="145" y1="55" x2="100" y2="60" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="55" y1="145" x2="100" y2="140" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="145" y1="145" x2="100" y2="140" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="55" y1="55" x2="60" y2="100" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="145" y1="55" x2="140" y2="100" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="55" y1="145" x2="60" y2="100" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            <line x1="145" y1="145" x2="140" y2="100" stroke="#5ddbff" stroke-width="1.5" opacity="0.5"/>
+                            
+                            <!-- Center node (largest, brightest) -->
+                            <circle cx="100" cy="100" r="10" fill="url(#nodeGradient)" filter="url(#glow)" opacity="0.9"/>
+                        </svg>
+                        <div class="logo-text">IntSphere</div>
+                    </div>
+                    <div class="tagline">All-in-One Platform for Oracle Integration Cloud (OIC) Excellence</div>
+                </div>
+                <div class="content-box" style="text-align: center;">
+                    <h1>Transform Your OIC Experience</h1>
+                    <p class="subtitle">Comprehensive monitoring, deployment, and productivity improvement tools in one unified platform</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Platform Features</h2>
-                <p>IntSphere provides a comprehensive suite of tools to enhance your Oracle Integration Cloud operations</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>One-Click Deployment</h3>
-                    <p>Deploy integrations instantly with automated processes and reduce manual errors by 90%.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>TDD Generation</h3>
-                    <p>Automatic Technical Design Document creation for all your integration projects with consistent formatting.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Flow Diagram Generation</h3>
-                    <p>Visual representation of integration flows for better understanding and comprehensive documentation.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <h3>Test Case Generation</h3>
-                    <p>Automated Postman test cases at your fingertips for comprehensive API testing and validation.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Real-Time Monitoring</h3>
-                    <p>Track integration health and performance with comprehensive dashboards and alert systems.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Team Collaboration</h3>
-                    <p>Streamline team workflows with assignment, notification, and approval features.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Consulting Section -->
-    <section class="consulting" id="consulting">
-        <div class="container">
-            <div class="section-title">
-                <h2>Oracle PaaS Consulting</h2>
-                <p>Expert consulting services to maximize your Oracle Platform as a Service investments</p>
-            </div>
-            <div class="consulting-content">
-                <div class="consulting-text">
-                    <h3>Maximize Your Oracle Cloud Investment</h3>
-                    <p>Our Oracle PaaS consulting services help organizations leverage the full potential of Oracle's cloud platform. With deep expertise in Oracle Integration Cloud (OIC), we deliver solutions that drive business transformation and operational excellence.</p>
-                    <p>We specialize in designing, implementing, and optimizing Oracle PaaS solutions that align with your business objectives and technical requirements, ensuring maximum ROI from your cloud investments.</p>
-                    <a href="#contact" class="btn">Schedule a Consultation</a>
-                </div>
-                <div class="consulting-services">
-                    <div class="service-item">
-                        <h4><i class="fas fa-paint-brush"></i> VBCS (Visual Builder Cloud Service)</h4>
-                        <p>Custom application development using Oracle's low-code platform for rapid web and mobile app creation with enterprise-grade features.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-cogs"></i> Oracle Process Automation</h4>
-                        <p>End-to-end business process automation solutions to streamline operations, reduce manual work, and improve efficiency across departments.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-database"></i> Fusion Technical</h4>
-                        <p>Technical implementation and customization of Oracle Fusion Applications to meet specific business needs and integration requirements.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-code"></i> Extensions Development</h4>
-                        <p>Custom extensions for Oracle Cloud Applications to enhance functionality, address unique requirements, and integrate with third-party systems.</p>
-                    </div>
-                    <div class="service-item">
-                        <h4><i class="fas fa-headset"></i> Support & Maintenance</h4>
-                        <p>Ongoing technical support, maintenance, and optimization services for your Oracle PaaS implementations with 24/7 monitoring.</p>
+        <!-- Slide 2: Platform Overview -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="content-box">
+                    <h2>What is IntSphere?</h2>
+                    <p class="subtitle">IntSphere is a comprehensive platform designed to streamline and enhance your Oracle Integration Cloud (OIC) operations.</p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>🎯 Unified Dashboard</h3>
+                            <p>Monitor all critical aspects of OIC from a single, intuitive interface</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>⚡ Accelerated Development</h3>
+                            <p>Auto-generate documentation, tests, and deployment artifacts</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔄 Smart Automation</h3>
+                            <p>One-click deployment and GitHub integration for seamless workflows</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📊 Advanced Monitoring</h3>
+                            <p>Real-time tracking, error management, and team collaboration tools</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Oracle PaaS Expertise</h2>
-                <p>Comprehensive services across the Oracle Cloud Platform ecosystem</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Oracle Integration Cloud</h3>
-                    <p>End-to-end integration solutions connecting cloud and on-premises applications with robust monitoring and management.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>VBCS Development</h3>
-                    <p>Custom web and mobile applications built with Oracle's Visual Builder Cloud Service for rapid digital transformation.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-stream"></i>
-                    </div>
-                    <h3>Process Automation</h3>
-                    <p>Automate complex business processes with Oracle Process Cloud Service to improve efficiency and reduce errors.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <h3>Fusion Extensions</h3>
-                    <p>Custom extensions and personalizations for Oracle Fusion Applications to meet unique business requirements.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Security & Compliance</h3>
-                    <p>Ensure your Oracle Cloud implementations meet security and compliance requirements with best practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Performance Optimization</h3>
-                    <p>Optimize the performance of your Oracle Cloud applications and integrations for maximum efficiency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Platform Section -->
-    <section class="platform" id="platform">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose IntSphere Platform</h2>
-                <p>Our platform delivers measurable results for organizations using Oracle Integration Cloud</p>
-            </div>
-            <div class="platform-stats">
-                <div class="stat-item">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-text">Reduction in Deployment Time</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">80%</div>
-                    <div class="stat-text">Automation of Manual Tasks</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50%</div>
-                    <div class="stat-text">Faster Error Resolution</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-text">Client Satisfaction Rate</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch with us to learn more about IntSphere and how we can help transform your OIC operations</p>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email Us</h3>
-                    <p><a href="mailto:kunal@intsphere.com" class="contact-link" style="color:white;">kunal@intsphere.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Call Us</h3>
-                    <p><a href="tel:+918149434549" class="contact-link" style="color:white;">+91 8149434549</a></p>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Location</h3>
-                    <p>Global Services</p>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>IntSphere</h3>
-                    <p>All-in-One Platform for Oracle Integration Cloud (OIC) Excellence with comprehensive consulting services.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="#consulting"><i class="fas fa-chevron-right"></i> Consulting</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#platform"><i class="fas fa-chevron-right"></i> Platform</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                        <li><a href="https://presentation.intsphere.com/"><i class="fas fa-chevron-right"></i> View Presentation</a></li>
+        <!-- Slide 3: Development Features -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="content-box">
+                    <h2>🚀 Development Features</h2>
+                    <ul class="feature-list">
+                        <li><span class="highlight">One-Click Deployment:</span> Deploy integrations instantly with automated processes</li>
+                        <li><span class="highlight">TDD Generation:</span> Automatic Technical Design Document creation</li>
+                        <li><span class="highlight">Flow Diagram Generation:</span> Visual representation of integration flows</li>
+                        <li><span class="highlight">Postman Collection:</span> Auto-generate API collections for testing</li>
+                        <li><span class="highlight">Test Case Generation:</span> Automated Postman test cases at your fingertips</li>
+                        
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-						<li><a href="#"><i class="fas fa-chevron-right"></i> OIC Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> VBCS Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Process Automation</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fusion Technical</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Extensions Development</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Support & Maintenance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> kunal@intsphere.com</p>
-                    <p><i class="fas fa-phone"></i> +91 8149434549</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Global Services</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 IntSphere. All rights reserved. | Oracle Integration Cloud Excellence</p>
             </div>
         </div>
-    </footer>
+
+        <!-- Slide 4: Monitoring Features -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="content-box">
+                    <h2>📡 Monitoring & Management</h2>
+                    <ul class="feature-list">
+                        <li><span class="highlight">Real-Time Monitoring:</span> Track integration health and performance</li>
+                        <li><span class="highlight">Functional Grouping:</span> Organize integrations by business functionality</li>
+                        <li><span class="highlight">Error Assignment:</span> Delegate errored integrations to support team members</li>
+                        <li><span class="highlight">Quick Resubmit:</span> Resubmit failed integrations with one click</li>
+                        <li><span class="highlight">Teams Integration:</span> Send run details directly to Microsoft Teams</li>
+                        <li><span class="highlight">Ticketing System:</span> Create support tickets instantly from errors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Key Benefits -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="content-box">
+                    <h2>💡 Key Benefits</h2>
+                    <div class="feature-grid benefits-grid">
+                        <div class="feature-card">
+                            <h3>🚀 Faster Deployment</h3>
+                            <p>Accelerate release cycles with one-click deployment</p>
+                        </div>
+						  <div class="feature-card">
+                            <h3>📱 Mobile Friendly</h3>
+                            <p>Access and manage OIC operations on-the-go from any device</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎯 Increase Accuracy</h3>
+                            <p>Eliminate human errors with automated documentation and testing</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>👥 Better Collaboration</h3>
+                            <p>Streamline team workflows with assignment and notification features</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📈 Enhanced Visibility</h3>
+                            <p>Comprehensive dashboard for complete OIC oversight</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔒 Improved Reliability</h3>
+                            <p>Proactive monitoring and quick error resolution</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>⏱️ Save Time</h3>
+                            <p>Reduce manual tasks by 70% with automation and generation tools</p>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Call to Action -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="logo-section">
+                    <div class="logo-with-text">
+                       
+                        
+                        <div class="logo-text">IntSphere</div>
+                    </div>
+                </div>
+                <div class="content-box" style="text-align: center;">
+                    <h2>Ready to Transform Your OIC Operations?</h2>
+                    <p class="subtitle" style="margin: 25px 0;">Join the future of OIC management with IntSphere</p>
+                    <div style="margin-top: 40px;">
+                        <h3 style="color: #5ddbff; font-size: 26px; margin-bottom: 15px;">Get Started Today</h3>
+                        <p style="color: #ffffff; font-size: 18px;">Experience the power of unified OIC platform management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Contact Us -->
+        <div class="slide">
+            <div class="slide-inner">
+                <div class="content-box" style="text-align: center;">
+                    <h2>📞 Contact Us</h2>
+                    <p class="subtitle" style="margin: 25px 0;">Get in touch with us to learn more about IntSphere</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                Email: <a href="mailto:kunal@intsphere.com" class="contact-link">kunal@intsphere.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-text">
+                                Phone: <a href="tel:+918149434549" class="contact-link">+91 8149434549</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px;">
+                        <h3>Let's Transform Your OIC Experience Together!</h3>
+                        <p class="subtitle" style="margin-top: 15px;">
+                            Reach out to schedule a demo or discuss how IntSphere can benefit your organization
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Mobile Navigation Toggle - Fixed Version
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-        
-        function toggleMobileMenu() {
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        // Initialize 3D Sphere Logo
+        const canvas = document.getElementById('bannerSphere');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth <= 768 ? 80 : 100;
+            canvas.height = window.innerWidth <= 768 ? 80 : 100;
+            const centerX = canvas.width / 2, centerY = canvas.height / 2, radius = canvas.width * 0.36;
+            
+            class Node { 
+                constructor(lat, lon) { 
+                    this.lat = lat; 
+                    this.lon = lon; 
+                } 
+                getPosition(r) {
+                    const phi = (90 - this.lat) * Math.PI / 180;
+                    const theta = (this.lon + r) * Math.PI / 180;
+                    const x = radius * Math.sin(phi) * Math.cos(theta);
+                    const y = radius * Math.sin(phi) * Math.sin(theta);
+                    const z = radius * Math.cos(phi);
+                    return { x, y, z };
+                }
+            }
+            
+            const nodes = [...Array(15)].map(() => new Node((Math.random() * 180) - 90, Math.random() * 360));
+            const connections = [];
+            for (let i = 0; i < nodes.length; i++)
+                for (let j = i + 1; j < nodes.length; j++)
+                    if (Math.random() > 0.65) connections.push([i, j]);
+            
+            let rotation = 0;
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                rotation += 0.8;
+
+                const pos = nodes.map(n => {
+                    const p = n.getPosition(rotation);
+                    return {x: centerX + p.x, y: centerY + p.z, z: p.y, visible: p.y > -radius*0.3};
+                });
+
+                ctx.strokeStyle = 'rgba(77,217,255,0.5)';
+                ctx.lineWidth = 1.5;
+                connections.forEach(([i,j]) => {
+                    if(pos[i].visible && pos[j].visible){
+                        ctx.beginPath();
+                        ctx.moveTo(pos[i].x, pos[i].y);
+                        ctx.lineTo(pos[j].x, pos[j].y);
+                        ctx.stroke();
+                    }
+                });
+
+                pos.forEach(p => {
+                    if(p.visible){
+                        const s = 3 + (p.z + radius) / (2*radius) * 2.5;
+                        const a = 0.6 + (p.z + radius) / (2*radius) * 0.4;
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = `rgba(77,217,255,${a})`;
+                        ctx.fillStyle = `rgba(77,217,255,${a})`;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, s, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                });
+
+                requestAnimationFrame(draw);
+            }
+            draw();
         }
+
+        // Slide Navigation
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let startX = 0;
+        let endX = 0;
+        const swipeThreshold = 50;
         
-        navToggle.addEventListener('click', toggleMobileMenu);
-        navOverlay.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(n, direction = 1) {
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.add(direction === 1 ? 'slide-out-left' : 'slide-out-right');
+            }
+            
+            setTimeout(() => {
+                slides.forEach(slide => {
+                    slide.classList.remove('active', 'slide-out-left', 'slide-out-right');
+                });
+                
+                currentSlide = (n + totalSlides) % totalSlides;
+                slides[currentSlide].classList.add('active');
+                
+                document.getElementById('currentSlide').textContent = currentSlide + 1;
+            }, 150);
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction, direction);
+        }
+
+        document.getElementById('presentation').addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
         });
-        
-        // Close menu when pressing Escape key
+
+        document.getElementById('presentation').addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        document.getElementById('presentation').addEventListener('mousedown', (e) => {
+            startX = e.screenX;
+            document.getElementById('presentation').addEventListener('mousemove', handleMouseMove);
+        });
+
+        document.getElementById('presentation').addEventListener('mouseup', (e) => {
+            endX = e.screenX;
+            handleSwipe();
+            document.getElementById('presentation').removeEventListener('mousemove', handleMouseMove);
+        });
+
+        function handleMouseMove(e) {
+            endX = e.screenX;
+        }
+
+        function handleSwipe() {
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    changeSlide(1);
+                } else {
+                    changeSlide(-1);
+                }
+            }
+        }
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                toggleMobileMenu();
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.background = 'rgba(15, 42, 92, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'rgba(30, 60, 114, 0.95)';
-            }
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
         });
 
-        // Add animation to elements when they come into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all feature cards and service items
-        document.querySelectorAll('.feature-card, .service-card, .service-item, .stat-item, .contact-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        showSlide(0);
     </script>
 </body>
 </html>
