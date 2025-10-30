@@ -419,6 +419,129 @@
             color: #ffffff;
         }
 
+        /* Demo Form Modal */
+        .demo-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .demo-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-modal-content {
+            position: relative;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(93, 219, 255, 0.2);
+        }
+
+        .demo-modal-content h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .demo-modal-content p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .demo-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .demo-form input,
+        .demo-form textarea {
+            padding: 12px 15px;
+            border: 1px solid rgba(93, 219, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .demo-form input::placeholder,
+        .demo-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .demo-form input:focus,
+        .demo-form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(93, 219, 255, 0.6);
+            box-shadow: 0 0 10px rgba(93, 219, 255, 0.2);
+        }
+
+        .demo-form textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .demo-form button {
+            padding: 12px;
+            background: linear-gradient(135deg, #5ddbff 0%, #00d4ff 100%);
+            color: #1e3c72;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .demo-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(93, 219, 255, 0.4);
+        }
+
+        .demo-form button:active {
+            transform: translateY(0);
+        }
+
+        .demo-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -1016,7 +1139,7 @@
                     <h1>Transform Your OIC Experience</h1>
                     <p class="subtitle">Comprehensive monitoring, deployment, and productivity improvement tools in one unified platform</p>
                     <div class="cta-container">
-                        <a href="https://www.intsphere.com" target="_blank" class="cta-button secondary">Schedule Demo</a>
+                        <a href="javascript:void(0)" onclick="openDemoModal()" class="cta-button secondary">Schedule Demo</a>
                     </div>
                 </div>
             </div>
@@ -1313,7 +1436,7 @@
                         <p class="subtitle" style="margin-top: 15px; margin-bottom: 25px;">
                             Reach out to schedule a demo or discuss how IntSphere can benefit your organization
                         </p>
-                        <a href="https://www.intsphere.com" target="_blank" class="cta-button">Start Your Journey</a>
+                        <a href="javascript:void(0)" onclick="openDemoModal()" class="cta-button">Start Your Journey</a>
                     </div>
                 </div>
             </div>
@@ -1325,6 +1448,24 @@
         <div class="lightbox-content">
             <span class="lightbox-close" id="lightboxClose">&times;</span>
             <img src="" alt="Enlarged view" class="lightbox-img" id="lightboxImg">
+        </div>
+    </div>
+
+    <!-- Demo Form Modal -->
+    <div class="demo-modal" id="demoModal">
+        <div class="demo-modal-content">
+            <button class="demo-modal-close" id="demoModalClose">&times;</button>
+            <h2>Schedule Your Demo</h2>
+            <p>Get in touch with our team to schedule a personalized demo of IntSphere</p>
+            
+            <form action="https://api.web3forms.com/submit" method="POST" class="demo-form" id="demoForm">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+				<input type="text" name="customerName" placeholder="Customer Name" required>
+                <textarea name="message" placeholder="Tell us about your requirements..." required></textarea>
+                <button type="submit">Send Demo Request</button>
+            </form>
         </div>
     </div>
 
@@ -1489,6 +1630,42 @@
             if (e.key === 'Escape' && lightbox.classList.contains('active')) {
                 lightbox.classList.remove('active');
             }
+        });
+
+        // Demo Modal Functionality
+        const demoModal = document.getElementById('demoModal');
+        const demoModalClose = document.getElementById('demoModalClose');
+        const demoForm = document.getElementById('demoForm');
+
+        function openDemoModal() {
+            demoModal.classList.add('active');
+        }
+
+        function closeDemoModal() {
+            demoModal.classList.remove('active');
+        }
+
+        // Close modal when X button is clicked
+        demoModalClose.addEventListener('click', closeDemoModal);
+
+        // Close modal when clicking outside the modal content
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) {
+                closeDemoModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && demoModal.classList.contains('active')) {
+                closeDemoModal();
+            }
+        });
+
+        // Handle form submission
+        demoForm.addEventListener('submit', function(e) {
+            // Allow Web3Forms to handle the submission
+            // The form will redirect after successful submission
         });
     </script>
 </body>
