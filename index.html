@@ -124,6 +124,11 @@
             background-clip: padding-box;
         }
 
+        /* No scroll on first slide */
+        .slide:first-child .slide-inner {
+            overflow: hidden;
+        }
+
 		/* Hamburger Menu Styles */
 		.hamburger-menu {
 			position: fixed;
@@ -1459,10 +1464,9 @@
             <p>Get in touch with our team to schedule a personalized demo of IntSphere</p>
             
             <form action="https://api.web3forms.com/submit" method="POST" class="demo-form" id="demoForm">
-                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-				<input type="text" name="customerName" placeholder="Customer Name" required>
                 <textarea name="message" placeholder="Tell us about your requirements..." required></textarea>
                 <button type="submit">Send Demo Request</button>
             </form>
