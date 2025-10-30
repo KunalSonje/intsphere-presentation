@@ -1086,6 +1086,25 @@
                 margin-top: 10px;
             }
 
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .feature-card {
+                padding: 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 16px;
+                margin-bottom: 6px;
+            }
+
+            .feature-card p {
+                font-size: 13px;
+            }
+
             .stat-number {
                 font-size: 24px;
             }
@@ -1308,13 +1327,28 @@
             <div class="slide-inner">
                 <div class="content-box">
                     <h2>🚀 Development Features</h2>
-                    <ul class="feature-list">
-                        <li><span class="highlight">One-Click Deployment:</span> Deploy integrations instantly with automated processes</li>
-                        <li><span class="highlight">TDD Generation:</span> Automatic Technical Design Document creation</li>
-                        <li><span class="highlight">Flow Diagram Generation:</span> Visual representation of integration flows</li>
-                        <li><span class="highlight">Postman Collection:</span> Auto-generate API collections for testing</li>
-                        <li><span class="highlight">Test Case Generation:</span> Automated Postman test cases at your fingertips</li>
-                    </ul>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>⚡ One-Click Deployment</h3>
+                            <p>Deploy integrations instantly with automated processes</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📋 TDD Generation</h3>
+                            <p>Automatic Technical Design Document creation</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📊 Flow Diagrams</h3>
+                            <p>Visual representation of integration flows</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔧 Postman Collection</h3>
+                            <p>Auto-generate API collections for testing</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>✅ Test Case Generation</h3>
+                            <p>Automated Postman test cases at your fingertips</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1324,14 +1358,32 @@
             <div class="slide-inner">
                 <div class="content-box">
                     <h2>📡 Monitoring & Management</h2>
-                    <ul class="feature-list">
-                        <li><span class="highlight">Real-Time Monitoring:</span> Track integration health and performance</li>
-                        <li><span class="highlight">Functional Grouping:</span> Organize integrations by business functionality</li>
-                        <li><span class="highlight">Error Assignment:</span> Delegate errored integrations to support team members</li>
-                        <li><span class="highlight">Quick Resubmit:</span> Resubmit failed integrations with one click</li>
-                        <li><span class="highlight">Teams Integration:</span> Send run details directly to Microsoft Teams</li>
-                        <li><span class="highlight">Ticketing System:</span> Create support tickets instantly from errors</li>
-                    </ul>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>📊 Real-Time Monitoring</h3>
+                            <p>Track integration health and performance</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🗂️ Functional Grouping</h3>
+                            <p>Organize integrations by business functionality</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>👥 Error Assignment</h3>
+                            <p>Delegate errored integrations to support team members</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>⚡ Quick Resubmit</h3>
+                            <p>Resubmit failed integrations with one click</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>💬 Teams Integration</h3>
+                            <p>Send run details directly to Microsoft Teams</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎫 Ticketing System</h3>
+                            <p>Create support tickets instantly from errors</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
