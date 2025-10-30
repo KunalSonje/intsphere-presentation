@@ -1023,6 +1023,9 @@
             }
             .logo-text {
                 font-size: 32px;
+                line-height: 1;
+                display: flex;
+                align-items: center;
             }
 
             .logo-img {
@@ -1033,6 +1036,8 @@
             .logo-with-text {
                 gap: 12px;
                 margin-bottom: 15px;
+                align-items: center;
+                justify-content: center;
             }
 
             .tagline {
@@ -1089,11 +1094,24 @@
             }
 
             .content-box > p.subtitle {
-                margin: 8px 0 20px 0 !important;
+                margin: 8px 0 15px 0 !important;
+            }
+
+            .contact-info {
+                margin-bottom: 20px;
+            }
+
+            /* Make phone icon red on mobile */
+            .contact-item:last-child .contact-icon {
+                filter: hue-rotate(0deg) brightness(1.2);
             }
 
             .content-box > div {
                 margin-top: 30px !important;
+            }
+
+            .content-box > div > p.subtitle {
+                margin: 10px 0 15px 0 !important;
             }
         }
 
@@ -1491,9 +1509,10 @@
             <p>Get in touch with our team to schedule a personalized demo of IntSphere</p>
             
             <form action="https://api.web3forms.com/submit" method="POST" class="demo-form" id="demoForm">
-                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
+				<input type="text" name="customerName" placeholder="Customer Email" required>
                 <textarea name="message" placeholder="Tell us about your requirements..." required></textarea>
                 <button type="submit">Send Demo Request</button>
             </form>
