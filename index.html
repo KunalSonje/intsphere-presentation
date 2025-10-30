@@ -124,6 +124,11 @@
             background-clip: padding-box;
         }
 
+        /* No scroll on first slide */
+        .slide:first-child .slide-inner {
+            overflow: hidden;
+        }
+
 		/* Hamburger Menu Styles */
 		.hamburger-menu {
 			position: fixed;
@@ -1020,12 +1025,46 @@
                 font-size: 32px;
             }
 
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-with-text {
+                gap: 12px;
+                margin-bottom: 15px;
+            }
+
             .tagline {
                 font-size: 16px;
             }
 
-            h1, h2 {
-                font-size: 22px;
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .cta-container {
+                margin-top: 15px;
+            }
+
+            h1 {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+
+            .slide {
+                padding: 20px 15px;
+            }
+
+            h2 {
+                font-size: 28px;
+                margin-bottom: 15px;
             }
 
             h3 {
@@ -1039,6 +1078,10 @@
             .stat-number {
                 font-size: 24px;
             }
+
+            .subtitle {
+                font-size: 16px;
+            }
         }
 
         @media (max-height: 700px) {
@@ -1047,39 +1090,15 @@
             }
 
             .logo-text {
-                font-size: 50px;
+                font-size: 36px;
             }
 
             .tagline {
                 font-size: 20px;
             }
 
-            h1 {
-                font-size: 36px;
-                margin-bottom: 15px;
-            }
-
-            h2 {
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-
-            .content-box {
-                padding: 25px;
-            }
-
-            .feature-card {
-                padding: 15px;
-            }
-
-            .feature-list li {
-                font-size: 16px;
-                padding: 10px;
-                margin: 6px 0;
-            }
-
             .subtitle {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     </style>
@@ -1459,10 +1478,9 @@
             <p>Get in touch with our team to schedule a personalized demo of IntSphere</p>
             
             <form action="https://api.web3forms.com/submit" method="POST" class="demo-form" id="demoForm">
-                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-				<input type="text" name="customerName" placeholder="Customer Name" required>
                 <textarea name="message" placeholder="Tell us about your requirements..." required></textarea>
                 <button type="submit">Send Demo Request</button>
             </form>
