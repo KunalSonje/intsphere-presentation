@@ -383,8 +383,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.3s ease-in-out;
         }
 
@@ -396,9 +396,13 @@
 
         .lightbox-content {
             position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
+            max-width: 95vw;
+            max-height: 95vh;
             animation: zoomIn 0.3s ease-in-out;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .lightbox-img {
@@ -406,22 +410,33 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 50px rgba(93, 219, 255, 0.5);
+            object-fit: contain;
+            max-height: 90vh;
         }
 
         .lightbox-close {
             position: absolute;
-            top: -40px;
-            right: 0;
-            color: #5ddbff;
-            font-size: 40px;
+            top: 10px;
+            right: 20px;
+            color: #ffffff;
+            font-size: 36px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             z-index: 2001;
+            background: rgba(0, 0, 0, 0.6);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
 
         .lightbox-close:hover {
-            color: #ffffff;
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
         }
 
         /* Demo Form Modal */
@@ -1051,7 +1066,7 @@
             }
 
             .content-box {
-                padding: 20px;
+                padding: 15px;
             }
 
             .cta-container {
@@ -1069,7 +1084,7 @@
 
             h2 {
                 font-size: 28px;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
             h3 {
@@ -1078,6 +1093,31 @@
 
             .feature-list li {
                 font-size: 14px;
+                padding: 8px 12px;
+                margin: 5px 0;
+            }
+
+            .feature-list {
+                margin-top: 10px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .feature-card {
+                padding: 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 16px;
+                margin-bottom: 6px;
+            }
+
+            .feature-card p {
+                font-size: 13px;
             }
 
             .stat-number {
@@ -1302,13 +1342,28 @@
             <div class="slide-inner">
                 <div class="content-box">
                     <h2>🚀 Development Features</h2>
-                    <ul class="feature-list">
-                        <li><span class="highlight">One-Click Deployment:</span> Deploy integrations instantly with automated processes</li>
-                        <li><span class="highlight">TDD Generation:</span> Automatic Technical Design Document creation</li>
-                        <li><span class="highlight">Flow Diagram Generation:</span> Visual representation of integration flows</li>
-                        <li><span class="highlight">Postman Collection:</span> Auto-generate API collections for testing</li>
-                        <li><span class="highlight">Test Case Generation:</span> Automated Postman test cases at your fingertips</li>
-                    </ul>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>⚡ One-Click Deployment</h3>
+                            <p>Deploy integrations instantly with automated processes</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📋 TDD Generation</h3>
+                            <p>Automatic Technical Design Document creation</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📊 Flow Diagrams</h3>
+                            <p>Visual representation of integration flows</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🔧 Postman Collection</h3>
+                            <p>Auto-generate API collections for testing</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>✅ Test Case Generation</h3>
+                            <p>Automated Postman test cases at your fingertips</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1318,14 +1373,32 @@
             <div class="slide-inner">
                 <div class="content-box">
                     <h2>📡 Monitoring & Management</h2>
-                    <ul class="feature-list">
-                        <li><span class="highlight">Real-Time Monitoring:</span> Track integration health and performance</li>
-                        <li><span class="highlight">Functional Grouping:</span> Organize integrations by business functionality</li>
-                        <li><span class="highlight">Error Assignment:</span> Delegate errored integrations to support team members</li>
-                        <li><span class="highlight">Quick Resubmit:</span> Resubmit failed integrations with one click</li>
-                        <li><span class="highlight">Teams Integration:</span> Send run details directly to Microsoft Teams</li>
-                        <li><span class="highlight">Ticketing System:</span> Create support tickets instantly from errors</li>
-                    </ul>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>📊 Real-Time Monitoring</h3>
+                            <p>Track integration health and performance</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🗂️ Functional Grouping</h3>
+                            <p>Organize integrations by business functionality</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>👥 Error Assignment</h3>
+                            <p>Delegate errored integrations to support team members</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>⚡ Quick Resubmit</h3>
+                            <p>Resubmit failed integrations with one click</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>💬 Teams Integration</h3>
+                            <p>Send run details directly to Microsoft Teams</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🎫 Ticketing System</h3>
+                            <p>Create support tickets instantly from errors</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1454,7 +1527,7 @@
         <!-- Slide 10: Contact Us -->
         <div class="slide">
             <div class="slide-inner">
-                <div class="content-box" style="text-align: center;">
+                <div class="content-box">
                     <h2>📞 Contact Us</h2>
                     <p class="subtitle" style="margin: 25px 0;">Get in touch with us to learn more about IntSphere</p>
                     
@@ -1509,10 +1582,9 @@
             <p>Get in touch with our team to schedule a personalized demo of IntSphere</p>
             
             <form action="https://api.web3forms.com/submit" method="POST" class="demo-form" id="demoForm">
-                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0-4416ec552e5a">
+                <input type="hidden" name="access_key" value="edc3314b-2f26-4469-b0b0">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-				<input type="text" name="customerName" placeholder="Customer Email" required>
                 <textarea name="message" placeholder="Tell us about your requirements..." required></textarea>
                 <button type="submit">Send Demo Request</button>
             </form>
