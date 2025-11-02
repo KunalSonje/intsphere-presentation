@@ -19,7 +19,7 @@
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             overflow: hidden;
             height: 100vh;
-            touch-action: pan-y;
+            touch-action: manipulation;
         }
 
         .presentation {
@@ -358,6 +358,7 @@
             font-size: 48px;
             font-weight: bold;
             overflow: hidden;
+            touch-action: manipulation;
         }
 
         .gallery-item-image img {
@@ -368,6 +369,7 @@
             cursor: pointer;
             transition: transform 0.3s ease;
             padding: 5px;
+            touch-action: manipulation;
         }
 
         .gallery-item-image img:hover {
@@ -403,6 +405,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            touch-action: manipulation;
         }
 
         .lightbox-img {
@@ -412,6 +415,7 @@
             box-shadow: 0 0 50px rgba(93, 219, 255, 0.5);
             object-fit: contain;
             max-height: 90vh;
+            touch-action: manipulation;
         }
 
         .lightbox-close {
