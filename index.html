@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="Logo.webp">
+<link rel="icon" type="image/png" href="Logo.png">
 <title>IntForge — OIC Activities, Simplified</title>
-<meta name="description" content="IntForge: 35 tools for Oracle Integration Cloud monitoring, bulk operations, TDD and release notes generation, Fusion and IDCS checks, and AI-powered analysis.">
+<meta name="description" content="IntForge: Platform for Oracle Integration Cloud monitoring, bulk operations, TDD and release notes generation, Fusion and IDCS checks, and AI-powered analysis. With FusionConnect for Fusion SQL, schema browsing and BI Publisher reports.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -226,14 +226,14 @@ body {
 .chip-teal  { background: rgba(8,145,178,0.10);  color: #0c5460; border-color: rgba(8,145,178,0.35); }
 .oic-line { margin-top: 0.6rem; padding-top: 0.45rem; border-top: 1px dashed var(--border-subtle); font-size: 0.74rem !important; color: var(--text-muted); line-height: 1.5; }
 .oic-line b { color: var(--primary-dark); }
-.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; background: white; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); font-size: 0.92rem; }
-.compare-table th { text-align: left; background: var(--grad-main); color: #e0f7fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.6px; text-transform: uppercase; padding: 0.65rem 1rem; }
-.compare-table td { padding: 0.7rem 1rem; vertical-align: top; border-top: 1px solid var(--border-subtle); line-height: 1.5; }
+.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; background: white; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); font-size: 0.84rem; }
+.compare-table th { text-align: left; background: var(--grad-main); color: #e0f7fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.6px; text-transform: uppercase; padding: 0.55rem 0.9rem; }
+.compare-table td { padding: 0.5rem 0.9rem; vertical-align: top; border-top: 1px solid var(--border-subtle); line-height: 1.5; }
 .compare-table .ct-area { width: 14%; font-weight: 700; color: var(--heading); white-space: nowrap; }
 .compare-table .ct-area i { color: var(--primary); margin-right: 6px; width: 16px; text-align: center; }
 .compare-table .ct-oic { width: 26%; color: var(--text-muted); }
 .compare-table .ct-forge { color: var(--text); }
-.compare-table .ct-forge .chip { font-size: 0.74rem; padding: 0.1rem 0.5rem; margin: 1px 2px 1px 0; }
+.compare-table .ct-forge .chip { font-size: 0.7rem; padding: 0.1rem 0.5rem; margin: 1px 2px 1px 0; }
 @media(max-width:700px) { .compare-table, .compare-table thead, .compare-table tbody, .compare-table tr, .compare-table td { display: block; } .compare-table thead { display: none; } .compare-table td { width: auto !important; border-top: none; padding: 0.2rem 0.9rem; } .compare-table tr { padding: 0.5rem 0; border-top: 1px solid var(--border-subtle); } .compare-table .ct-oic::before { content: "OIC: "; font-weight: 700; } }
 
 .menu-card h3 { display: flex; align-items: center; gap: 8px; margin-bottom: 0.1rem; }
@@ -564,7 +564,7 @@ body {
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-header">
-        <img src="Logo.webp" style="width:24px;height:24px;filter:drop-shadow(0 0 6px rgba(6,182,212,0.5));" onerror="this.style.display='none'">
+        <img src="Logo.png" style="width:24px;height:24px;filter:drop-shadow(0 0 6px rgba(6,182,212,0.5));" onerror="this.style.display='none'">
         <span>IntForge</span>
     </div>
     <ul>
@@ -579,19 +579,20 @@ body {
         <li><a href="#" data-slide="8" class="nav-link">Diagnose in Bulk</a></li>
         <li><a href="#" data-slide="9" class="nav-link">Operations</a></li>
         <li><a href="#" data-slide="10" class="nav-link">Fusion &amp; IDCS</a></li>
-        <li><a href="#" data-slide="11" class="nav-link">AI-Powered Solutions</a></li>
-        <li><a href="#" data-slide="12" class="nav-link">Developer Tools</a></li>
-        <li><a href="#" data-slide="13" class="nav-link">Governance &amp; Admin</a></li>
-        <li><a href="#" data-slide="14" class="nav-link">Key Benefits</a></li>
-        <li><a href="#" data-slide="15" class="nav-link">The IntForge Difference</a></li>
-        <li><a href="#" data-slide="16" class="nav-link">Get Started</a></li>
-        <li><a href="#" data-slide="17" class="nav-link">Contact Us</a></li>
+        <li><a href="#" data-slide="11" class="nav-link">FusionConnect</a></li>
+        <li><a href="#" data-slide="12" class="nav-link">AI-Powered Solutions</a></li>
+        <li><a href="#" data-slide="13" class="nav-link">Developer Tools</a></li>
+        <li><a href="#" data-slide="14" class="nav-link">Governance &amp; Admin</a></li>
+        <li><a href="#" data-slide="15" class="nav-link">Key Benefits</a></li>
+        <li><a href="#" data-slide="16" class="nav-link">The IntForge Difference</a></li>
+        <li><a href="#" data-slide="17" class="nav-link">Get Started</a></li>
+        <li><a href="#" data-slide="18" class="nav-link">Contact Us</a></li>
     </ul>
 </div>
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- Counter & Progress -->
-<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">18</span></div>
+<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">19</span></div>
 <div class="progress-bar" id="progressBar"></div>
 <div class="swipe-hint">← Swipe to navigate →</div>
 
@@ -602,23 +603,24 @@ body {
     <div class="slide slide-hero active">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
         </div>
         <div class="slide-body">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="Logo.webp" alt="IntForge" onerror="this.style.display='none'">
+                    <img src="Logo.png" alt="IntForge" onerror="this.style.display='none'">
                     <div class="hero-brand">IntForge</div>
                 </div>
                 <p class="hero-tagline">OIC Activities, Simplified.</p>
                 <h1 class="hero-h1">Transform Your Oracle<br>Integration Cloud Experience</h1>
-                <p class="hero-sub">35 tools for monitoring, documentation, bulk operations, Fusion checks and AI assistance &mdash; unified in one platform built for OIC, Fusion, IDCS &amp; VBCS teams.</p>
+                <p class="hero-sub">Platform for Oracle Integration Cloud monitoring, bulk operations, TDD and release notes generation, Fusion and IDCS checks, and AI-powered analysis. With <strong>FusionConnect</strong> for Fusion SQL, schema browsing and BI Publisher reports.</p>
                 <div class="pill-row" style="justify-content:center;">
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-chart-line" style="color:#67e8f9;"></i> Monitoring</span>
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-brain" style="color:#67e8f9;"></i> AI Agent</span>
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-exchange-alt" style="color:#67e8f9;"></i> Fusion &amp; IDCS</span>
+                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-plug" style="color:#67e8f9;"></i> FusionConnect</span>
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-file-code" style="color:#67e8f9;"></i> TDD &amp; Release Notes</span>
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-power-off" style="color:#67e8f9;"></i> Bulk Operations</span>
                 </div>
@@ -633,7 +635,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Platform Overview</span>
@@ -655,7 +657,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Beyond the Console</span>
@@ -664,7 +666,7 @@ body {
             <div class="section-label"><i class="fas fa-layer-group"></i> The Differentiator</div>
             <div class="slide-title">OIC Gives You the Data. IntForge Adds the Insight.</div>
             <p class="slide-subtitle">Certificates, agents and monitoring are already in OIC. Here is what IntForge does on top of them.</p>
-            <table class="compare-table"><thead><tr><th>Area</th><th>What OIC gives you</th><th>What IntForge adds</th></tr></thead><tbody><tr><td class="ct-area"><i class="fas fa-certificate"></i> Certificates</td><td class="ct-oic">A list of certificates and their expiry dates.</td><td class="ct-forge">Colour-coded cards: <span class="chip chip-red">expired in red</span> <span class="chip chip-amber">expiring within 30 days in amber</span> <span class="chip chip-green">valid in green</span>, with a summary of how many need attention.</td></tr><tr><td class="ct-area"><i class="fas fa-chart-line"></i> Monitoring</td><td class="ct-oic">Run counts and instance lists, one integration at a time.</td><td class="ct-forge">A <strong>health score</strong> per integration (Healthy, Warning, Critical) with the critical ones first. Monitor <strong>a chosen set</strong> by integration, version, time window and error threshold, or by business functionality.</td></tr><tr><td class="ct-area"><i class="fas fa-search-plus"></i> Instance analysis</td><td class="ct-oic">Instances listed and opened individually.</td><td class="ct-forge">Successful and failed runs analysed together: filter by duration, record count and tracking variables, with charts for volume, endpoints and performance.</td></tr><tr><td class="ct-area"><i class="fas fa-download"></i> Logs</td><td class="ct-oic">Activity stream of one instance at a time.</td><td class="ct-forge">Select <strong>many integrations</strong> and download all their instance logs in <strong>one ZIP</strong>, search across them, and have <strong>AI explain the log</strong>.</td></tr><tr><td class="ct-area"><i class="fas fa-bolt"></i> Operations</td><td class="ct-oic">Activate, deactivate or trace one integration at a time.</td><td class="ct-forge">Bulk activate, deactivate and trace; see which integrations have not run in 32 days; manage integrations during a Fusion outage.</td></tr><tr><td class="ct-area"><i class="fas fa-file-alt"></i> Documentation</td><td class="ct-oic">Written by hand after the fact.</td><td class="ct-forge">Technical design documents, release notes, call graphs, Swagger docs and Postman collections generated from the live instance.</td></tr></tbody></table>
+            <table class="compare-table"><thead><tr><th>Area</th><th>What OIC gives you</th><th>What IntForge adds</th></tr></thead><tbody><tr><td class="ct-area"><i class="fas fa-chart-line"></i> Monitoring</td><td class="ct-oic">Run counts and instance lists, one integration at a time.</td><td class="ct-forge">A <strong>health score</strong> per integration (Healthy, Warning, Critical) with the critical ones first. Monitor <strong>a chosen set</strong> by integration, version, time window and error threshold, or by business functionality.</td></tr><tr><td class="ct-area"><i class="fas fa-life-ring"></i> Error resolution</td><td class="ct-oic">Errors listed per instance; follow-up happens outside OIC.</td><td class="ct-forge">From the error row: <strong>multi-model AI analysis</strong> to debug, <strong>email</strong> the failed instance details, <strong>create a ticket</strong> or <strong>message Teams</strong> &mdash; everyone coordinating from one place.</td></tr><tr><td class="ct-area"><i class="fas fa-search-plus"></i> Instance analysis</td><td class="ct-oic">Instances listed and opened individually.</td><td class="ct-forge">Performance and errors across <strong>multiple graphs</strong>, with filters by duration, record count and tracking variables.</td></tr><tr><td class="ct-area"><i class="fas fa-download"></i> Logs</td><td class="ct-oic">Activity stream of one instance at a time.</td><td class="ct-forge">Select <strong>many integrations</strong> and download all their instance logs in <strong>one ZIP</strong>, search across them, and have <strong>AI explain the log</strong>.</td></tr><tr><td class="ct-area"><i class="fas fa-bolt"></i> Operations</td><td class="ct-oic">Activate, deactivate or trace one integration at a time.</td><td class="ct-forge">Bulk activate, deactivate and trace; see which integrations have not run in 32 days; manage integrations during a Fusion outage.</td></tr><tr><td class="ct-area"><i class="fas fa-file-alt"></i> Documentation</td><td class="ct-oic">Written by hand after the fact.</td><td class="ct-forge">Technical design documents, release notes, call graphs, Swagger docs and Postman collections generated from the live instance.</td></tr><tr><td class="ct-area"><i class="fas fa-plug"></i> Fusion data and reports</td><td class="ct-oic">Fusion data and BI Publisher reports are reached in Fusion&rsquo;s own tools, outside OIC.</td><td class="ct-forge"><span class="chip chip-teal">FusionConnect</span> A <strong>SQL editor</strong> with autocomplete and bind variables, a <strong>schema browser</strong>, and <strong>BIP reports you register once and run from the platform</strong> &mdash; including the reports you use for monitoring.</td></tr><tr><td class="ct-area"><i class="fas fa-th-large"></i> Dashboard and certificates</td><td class="ct-oic">Separate pages for emails, agents and certificates.</td><td class="ct-forge">Emails sent, suppressed emails and agents as one visual dashboard. Certificates colour-coded: <span class="chip chip-red">expired in red</span> <span class="chip chip-amber">expiring within 30 days in amber</span> <span class="chip chip-green">valid in green</span>.</td></tr></tbody></table>
         </div>
     </div>
 
@@ -672,7 +674,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">The Full Menu</span>
@@ -687,7 +689,7 @@ body {
                 <div class="deck-card menu-card"><h3><i class="fas fa-satellite-dish"></i> Monitor &amp; Diagnose</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Monitor Integrations</span><span class="pill">Integration Mapper</span><span class="pill">Integration Purpose</span><span class="pill">Download Logs</span><span class="pill">Last Run</span><span class="pill">Tracing</span><span class="pill">OIC File Server</span></div></div>
                 <div class="deck-card menu-card"><h3><i class="fas fa-cogs"></i> Operations</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Bulk Operations</span><span class="pill">Connection Integrations</span><span class="pill">Fusion Outage Control</span></div></div>
                 <div class="deck-card menu-card"><h3><i class="fas fa-cloud"></i> Fusion</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Compare FBDI</span><span class="pill">Reports History</span><span class="pill">Fusion Users</span><span class="pill">Fusion Events</span><span class="pill">ESS Monitoring</span></div></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-id-badge"></i> IDCS &amp; VBCS</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">IDCS Users</span><span class="pill">Analyze VBCS Code</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-id-badge"></i> IDCS &amp; VBCS</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">IDCS Users</span><span class="pill">Analyze VBCS Code</span><span class="pill">VBCS TDD (coming soon)</span></div></div>
                 <div class="deck-card menu-card"><h3><i class="fas fa-brain"></i> AI</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Integration Analyzer</span><span class="pill">AI Analyzer</span><span class="pill">Multi AI Chat</span><span class="pill">OIC Agent</span></div></div>
                 <div class="deck-card menu-card"><h3><i class="fas fa-terminal"></i> Developer Tools</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">OIC API Explorer</span><span class="pill">Fusion API Explorer</span><span class="pill">API Workbench</span></div></div>
                 <div class="deck-card menu-card"><h3><i class="fas fa-book-open"></i> Resources &amp; Admin</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">OIC Notes</span><span class="pill">Settings</span></div></div>
@@ -699,7 +701,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Dashboard</span>
@@ -707,9 +709,9 @@ body {
         <div class="slide-body">
             <div class="section-label"><i class="fas fa-chart-pie"></i> Home</div>
             <div class="slide-title">A Dashboard That Tells You What Needs Attention</div>
-            <p class="slide-subtitle">The console has these pages. IntForge brings them together and adds alerts, colour and charts, so problems come to you.</p>
+            <p class="slide-subtitle">Number of emails sent, suppressed emails, agents and more &mdash; brought to one place and visualised, so the state of your OIC instance is easy to understand.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Alert Cards</h3><p>Turn red when an agent is down, a certificate is expired or expiring, the file server is over 80% full, or emails are being suppressed. Message totals and failed activations sit beside them.</p><p class="oic-line"><b>OIC alone:</b> each of these lives on a different page that you have to open and check.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Alert Cards</h3><p>Emails sent, suppressed emails, agents, certificates and file server quota as visual cards that turn red when something needs action &mdash; an agent is down, a certificate expires, the file server passes 80%, emails are suppressed.</p><p class="oic-line"><b>OIC alone:</b> each of these lives on a different page that you have to open and check.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-certificate"></i></div><h3>Certificates You Can Read at a Glance</h3><p>One card per certificate with a summary of what needs attention, and CSV export.</p><div class="chip-row"><span class="chip chip-red">Expired</span><span class="chip chip-amber">Expiring in 30 days</span><span class="chip chip-green">Valid</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-calendar-alt"></i></div><h3>Scheduled Runs, Visualised</h3><p>Every upcoming run across all scheduled integrations as a list, a calendar and a timeline, full screen, with CSV export.</p><p class="oic-line"><b>OIC alone:</b> schedules are viewed integration by integration.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-line"></i></div><h3>Usage Trends</h3><p>Hourly (last 24 hours) and daily message trends as charts you can switch between stacked, grouped and line, with CSV export.</p></div>
@@ -723,7 +725,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Design &amp; Explore</span>
@@ -733,7 +735,7 @@ body {
             <div class="slide-title">See How Everything Fits Together</div>
             <p class="slide-subtitle">OIC shows you one integration at a time. These tools show the whole picture and what changed.</p>
             <div class="card-grid cols-2">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-project-diagram"></i></div><h3>Call Graph</h3><p>Which integrations call which &mdash; and which call them &mdash; with the connections and target systems they use. Export as PNG or draw.io, or generate for every integration at once. Know the impact of a change before you make it.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-project-diagram"></i></div><h3>Call Graph</h3><p>Which integrations call which &mdash; and which call them &mdash; with their connections and target systems; export as PNG or draw.io. Plus <strong>AI analysis of a parent integration and all its child integrations in one go</strong>, downloadable as a Word document. Know the impact of a change before you make it.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-columns"></i></div><h3>Compare Integrations</h3><p>Compare two versions of an integration, or two projects, from IAR files: flow diagrams side by side (and full screen), including orchestrations with multiple endpoints. See exactly what changed between releases.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-sitemap"></i></div><h3>Flow Diagram</h3><p>Load an active integration and see its adapter flow as a diagram, or design a new one from scratch and export it.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tools"></i></div><h3>OIC Design Time</h3><p>Integrations, connections, lookups and agents browsable together &mdash; plus <strong>download every integration (IAR) in one go</strong>, the <strong>metadata of all connections</strong>, and <strong>all lookups</strong> as ZIP or CSV. Perfect for backups, audits and migrations.</p><p class="oic-line"><b>OIC alone:</b> download an archive, a connection or a lookup one at a time.</p></div>
@@ -745,7 +747,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Document &amp; Generate</span>
@@ -758,7 +760,7 @@ body {
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-file-word"></i></div><h3>Generate TDD</h3><p>A technical design document <strong>per integration</strong>, with its flow diagram and draw.io diagram, and the connections, agents, lookups and libraries it depends on. Select many, get one ZIP. Built from the live instance, so it matches what is deployed.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-clipboard-list"></i></div><h3>Release Notes</h3><p>Pick active integrations and projects and get release notes with the integration table, every connection&rsquo;s properties and the lookup data, as Word documents.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>API Swagger and Postman</h3><p>Browse an active integration&rsquo;s Swagger spec and generate a ready-to-import Postman collection, environment and test suite &mdash; for one integration or in bulk.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-calendar-alt"></i></div><h3>iCal Generator</h3><p>Build iCal recurrence rules for scheduled integrations without learning the syntax.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-calendar-alt"></i></div><h3>iCal Generator</h3><p>Just select the combination and the iCal rule is ready to use in OIC &mdash; no syntax to learn, no trial and error.</p></div>
             </div>
         </div>
     </div>
@@ -767,7 +769,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Monitor</span>
@@ -780,8 +782,8 @@ body {
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-heartbeat"></i></div><h3>Health Scores</h3><p>Every integration scored from its success and error rates, with the critical ones listed first for immediate attention.</p><div class="chip-row"><span class="chip chip-green">Healthy</span><span class="chip chip-amber">Warning</span><span class="chip chip-red">Critical</span></div></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-filter"></i></div><h3>Monitor Your Own Set</h3><p>Choose the integrations, versions, time window and minimum error count you care about, and the whole dashboard follows.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-layer-group"></i></div><h3>Monitor by Functionality</h3><p>Group integrations into business functions with the Integration Mapper and analyse each function, or each project, as one unit.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search-plus"></i></div><h3>Instance Analysis</h3><p>Successful and failed runs analysed together: filter by duration, record count and tracking variables, with charts for volume, endpoints and performance.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tasks"></i></div><h3>Error Actions</h3><p>Resubmit, assign to a teammate, send to Microsoft Teams, raise a ticket, or run <strong>multi-model AI analysis</strong> &mdash; several AI models explain the same error side by side &mdash; straight from the error row.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search-plus"></i></div><h3>Instance Analysis</h3><p>Performance and errors of your instances across <strong>multiple graphs</strong>: successful and failed runs analysed together, with filters by duration, record count and tracking variables.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tasks"></i></div><h3>Error Actions</h3><p>For better coordination and faster resolution, straight from the error row: <strong>multi-model AI analysis</strong> to debug, <strong>email the failed instance details</strong>, <strong>create a ticket</strong>, <strong>send a message to Teams</strong>, resubmit or assign.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-history"></i></div><h3>Audit Records</h3><p>Review audit records of changes in the instance next to runs and errors.</p></div>
             </div>
         </div>
@@ -791,7 +793,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Diagnose</span>
@@ -815,7 +817,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Operations</span>
@@ -836,7 +838,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Fusion &amp; IDCS</span>
@@ -844,7 +846,7 @@ body {
         <div class="slide-body">
             <div class="section-label"><i class="fas fa-cloud"></i> Fusion &amp; IDCS</div>
             <div class="slide-title">Fusion and Identity, Next to OIC</div>
-            <p class="slide-subtitle">The people running integrations also check Fusion data loads, users and reports. IntForge puts those checks in the same workspace.</p>
+            <p class="slide-subtitle">Fusion user roles, IDCS user status and the OIC file server &mdash; one platform for ease of monitoring, instead of a login to each.</p>
             <div class="card-grid cols-3">
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Compare FBDI</h3><p>Upload two FBDI template ZIP files and see file, column and row differences with a quick status &mdash; no more eyeballing spreadsheets.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-history"></i></div><h3>Reports History</h3><p>BIP report run history with daily trends, execution-time analysis, reports slower than a threshold you set highlighted, and upcoming scheduled runs.</p></div>
@@ -856,11 +858,32 @@ body {
         </div>
     </div>
 
+    <!-- ── SLIDE 10b: FUSIONCONNECT ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.png" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">FusionConnect</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-plug"></i> FusionConnect</div>
+            <div class="slide-title">FusionConnect: Query, Explore and Report on Fusion</div>
+            <p class="slide-subtitle">Our Fusion companion connects to your Fusion instance, so the people who monitor integrations can also get at Fusion data and reports without switching tools.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-database"></i></div><h3>SQL Editor</h3><p>Multi-tab queries, table and column autocomplete, and query parameters for Oracle bind variables.</p><div class="chip-row"><span class="chip chip-teal">FusionConnect</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search"></i></div><h3>Metadata &amp; Schema Browser</h3><p>Drill into table and column-level detail, and see how Fusion&rsquo;s schema fits together, without leaving the editor.</p><div class="chip-row"><span class="chip chip-teal">FusionConnect</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-bar"></i></div><h3>BIP Reports, Run from the Platform</h3><p>Register your Fusion BI Publisher reports once (folder, path, output formats, input parameters), then run them here: pick a report, fill the parameters, execute. Results open with search, download, maximize and a chart tab. Run the reports you use for monitoring without logging in to Fusion.</p><div class="chip-row"><span class="chip chip-teal">FusionConnect</span></div></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ── SLIDE 11: AI ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">AI-Powered Solutions</span>
@@ -874,7 +897,7 @@ body {
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-random"></i></div><h3>AI Analyzer</h3><p>Paste an error and compare up to four AI models&rsquo; analyses side by side, so you are not relying on one model&rsquo;s guess.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search"></i></div><h3>Integration Analyzer</h3><p>AI-powered technical analysis of an integration from its design.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-comments"></i></div><h3>Multi AI Chat</h3><p>Chat with several AI models at once and compare their answers, with conversations kept per person and per instance.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>VBCS Code Browser</h3><p>Upload a VBCS export and browse its structure with syntax-highlighted file viewing.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>VBCS Code Browser and TDD</h3><p>Upload a VBCS export and browse its structure with syntax-highlighted viewing. <strong>VBCS TDD</strong>, a generated technical design document for VBCS apps, is coming soon.</p></div>
                 <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-sliders-h"></i></div><h3>Choose Your Models</h3><p>Each person can pick the AI model per feature in Settings, and admins can assign models per user.</p></div>
             </div>
         </div>
@@ -884,7 +907,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Developer Tools</span>
@@ -906,7 +929,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Governance &amp; Admin</span>
@@ -930,7 +953,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Key Benefits</span>
@@ -954,7 +977,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">The IntForge Difference</span>
@@ -996,14 +1019,14 @@ body {
     <div class="slide slide-hero">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
         </div>
         <div class="slide-body">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="Logo.webp" alt="IntForge" onerror="this.style.display='none'">
+                    <img src="Logo.png" alt="IntForge" onerror="this.style.display='none'">
                     <div class="hero-brand">IntForge</div>
                 </div>
                 <p class="hero-tagline">OIC Activities, Simplified.</p>
@@ -1022,7 +1045,7 @@ body {
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
-                <img src="Logo.webp" onerror="this.style.display='none'">
+                <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
             <span class="slide-header-title">Contact Us</span>
@@ -1055,7 +1078,7 @@ body {
                 </div>
             </div>
             <div class="highlight-box" style="margin-top:1.25rem;">
-                <p><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:6px;"></i>704, Bhoomi Kshitij, Nakhate Wasti, Rahatani, Pune – 411017, Maharashtra, India</p>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:6px;"></i>401, Hawares Grand Heritage, Kalewadi Chowk, opposite Ambience Executive, Wakad, Pune – 411057, Maharashtra, India</p>
             </div>
             <div class="cta-box">
                 <h2>Let's Simplify Your OIC Together.</h2>
