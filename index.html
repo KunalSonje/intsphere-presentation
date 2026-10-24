@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="Logo.webp">
 <title>IntForge — OIC Activities, Simplified</title>
-<meta name="description" content="IntForge: All-in-one platform for Oracle Integration Cloud monitoring, deployment automation, AI-powered documentation and analytics.">
+<meta name="description" content="IntForge: 35 tools for Oracle Integration Cloud monitoring, bulk operations, TDD and release notes generation, Fusion and IDCS checks, and AI-powered analysis.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -176,6 +176,7 @@ body {
 }
 .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 
 /* ── CARD (matches .card in shared.css) ── */
 .deck-card {
@@ -216,6 +217,28 @@ body {
     color: var(--heading); margin-bottom: 0.35rem;
 }
 .deck-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.65; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.6rem; }
+.chip { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 30px; font-size: 0.7rem; font-weight: 700; border: 1px solid transparent; }
+.chip-red   { background: rgba(220,38,38,0.10);  color: #b91c1c; border-color: rgba(220,38,38,0.35); }
+.chip-amber { background: rgba(217,119,6,0.12);  color: #b45309; border-color: rgba(217,119,6,0.40); }
+.chip-green { background: rgba(22,163,74,0.10);  color: #15803d; border-color: rgba(22,163,74,0.35); }
+.chip-teal  { background: rgba(8,145,178,0.10);  color: #0c5460; border-color: rgba(8,145,178,0.35); }
+.oic-line { margin-top: 0.6rem; padding-top: 0.45rem; border-top: 1px dashed var(--border-subtle); font-size: 0.74rem !important; color: var(--text-muted); line-height: 1.5; }
+.oic-line b { color: var(--primary-dark); }
+.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; background: white; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); font-size: 0.92rem; }
+.compare-table th { text-align: left; background: var(--grad-main); color: #e0f7fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.6px; text-transform: uppercase; padding: 0.65rem 1rem; }
+.compare-table td { padding: 0.7rem 1rem; vertical-align: top; border-top: 1px solid var(--border-subtle); line-height: 1.5; }
+.compare-table .ct-area { width: 14%; font-weight: 700; color: var(--heading); white-space: nowrap; }
+.compare-table .ct-area i { color: var(--primary); margin-right: 6px; width: 16px; text-align: center; }
+.compare-table .ct-oic { width: 26%; color: var(--text-muted); }
+.compare-table .ct-forge { color: var(--text); }
+.compare-table .ct-forge .chip { font-size: 0.74rem; padding: 0.1rem 0.5rem; margin: 1px 2px 1px 0; }
+@media(max-width:700px) { .compare-table, .compare-table thead, .compare-table tbody, .compare-table tr, .compare-table td { display: block; } .compare-table thead { display: none; } .compare-table td { width: auto !important; border-top: none; padding: 0.2rem 0.9rem; } .compare-table tr { padding: 0.5rem 0; border-top: 1px solid var(--border-subtle); } .compare-table .ct-oic::before { content: "OIC: "; font-weight: 700; } }
+
+.menu-card h3 { display: flex; align-items: center; gap: 8px; margin-bottom: 0.1rem; }
+.menu-card h3 i { color: var(--primary); font-size: 0.95rem; width: 18px; text-align: center; }
+.menu-card .pill { padding: 0.22rem 0.7rem; font-size: 0.74rem; }
 
 /* ── STAT BOXES ── */
 .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.25rem 0; }
@@ -516,7 +539,7 @@ body {
 @media(max-width:900px) {
     .slide-body { padding: 1.5rem 1.25rem 5rem; }
     .slide-header { padding: 0.75rem 1.25rem; }
-    .card-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
+    .card-grid.cols-3, .card-grid.cols-4 { grid-template-columns: repeat(2,1fr); }
     .image-gallery { grid-template-columns: repeat(2,1fr); }
     .contact-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -524,7 +547,7 @@ body {
 }
 @media(max-width:600px) {
     .slide-body { padding: 1.25rem 1rem 5rem; }
-    .card-grid, .card-grid.cols-3, .card-grid.cols-2 { grid-template-columns: 1fr; }
+    .card-grid, .card-grid.cols-3, .card-grid.cols-2, .card-grid.cols-4 { grid-template-columns: 1fr; }
     .image-gallery { grid-template-columns: 1fr; }
     .swipe-hint { display: block; }
     .stats-grid { grid-template-columns: 1fr; }
@@ -547,20 +570,28 @@ body {
     <ul>
         <li><a href="#" data-slide="0" class="nav-link">Home</a></li>
         <li><a href="#" data-slide="1" class="nav-link">Platform Overview</a></li>
-        <li><a href="#" data-slide="2" class="nav-link">Platform Showcase</a></li>
-        <li><a href="#" data-slide="3" class="nav-link">Development Features</a></li>
-        <li><a href="#" data-slide="4" class="nav-link">Monitoring</a></li>
-        <li><a href="#" data-slide="5" class="nav-link">AI-Powered Solutions</a></li>
-        <li><a href="#" data-slide="6" class="nav-link">Key Benefits</a></li>
-        <li><a href="#" data-slide="7" class="nav-link">The IntForge Difference</a></li>
-        <li><a href="#" data-slide="8" class="nav-link">Get Started</a></li>
-        <li><a href="#" data-slide="9" class="nav-link">Contact Us</a></li>
+        <li><a href="#" data-slide="2" class="nav-link">Beyond the Console</a></li>
+        <li><a href="#" data-slide="3" class="nav-link">The Full Menu</a></li>
+        <li><a href="#" data-slide="4" class="nav-link">Dashboard</a></li>
+        <li><a href="#" data-slide="5" class="nav-link">Design &amp; Explore</a></li>
+        <li><a href="#" data-slide="6" class="nav-link">Document &amp; Generate</a></li>
+        <li><a href="#" data-slide="7" class="nav-link">Monitoring</a></li>
+        <li><a href="#" data-slide="8" class="nav-link">Diagnose in Bulk</a></li>
+        <li><a href="#" data-slide="9" class="nav-link">Operations</a></li>
+        <li><a href="#" data-slide="10" class="nav-link">Fusion &amp; IDCS</a></li>
+        <li><a href="#" data-slide="11" class="nav-link">AI-Powered Solutions</a></li>
+        <li><a href="#" data-slide="12" class="nav-link">Developer Tools</a></li>
+        <li><a href="#" data-slide="13" class="nav-link">Governance &amp; Admin</a></li>
+        <li><a href="#" data-slide="14" class="nav-link">Key Benefits</a></li>
+        <li><a href="#" data-slide="15" class="nav-link">The IntForge Difference</a></li>
+        <li><a href="#" data-slide="16" class="nav-link">Get Started</a></li>
+        <li><a href="#" data-slide="17" class="nav-link">Contact Us</a></li>
     </ul>
 </div>
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- Counter & Progress -->
-<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">10</span></div>
+<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">18</span></div>
 <div class="progress-bar" id="progressBar"></div>
 <div class="swipe-hint">← Swipe to navigate →</div>
 
@@ -583,13 +614,13 @@ body {
                 </div>
                 <p class="hero-tagline">OIC Activities, Simplified.</p>
                 <h1 class="hero-h1">Transform Your Oracle<br>Integration Cloud Experience</h1>
-                <p class="hero-sub">Comprehensive monitoring, deployment automation, and AI-powered productivity tools — unified in one platform built for OIC &amp; VBCS teams.</p>
+                <p class="hero-sub">35 tools for monitoring, documentation, bulk operations, Fusion checks and AI assistance &mdash; unified in one platform built for OIC, Fusion, IDCS &amp; VBCS teams.</p>
                 <div class="pill-row" style="justify-content:center;">
                     <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-chart-line" style="color:#67e8f9;"></i> Monitoring</span>
-                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-brain" style="color:#67e8f9;"></i> AI Docs</span>
-                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-exchange-alt" style="color:#67e8f9;"></i> Migration</span>
-                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-file-code" style="color:#67e8f9;"></i> Auto TDD</span>
-                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-eye" style="color:#67e8f9;"></i> Analytics</span>
+                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-brain" style="color:#67e8f9;"></i> AI Agent</span>
+                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-exchange-alt" style="color:#67e8f9;"></i> Fusion &amp; IDCS</span>
+                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-file-code" style="color:#67e8f9;"></i> TDD &amp; Release Notes</span>
+                    <span class="pill" style="background:rgba(255,255,255,0.12);color:#a5f3fc;border-color:rgba(255,255,255,0.15);"><i class="fas fa-power-off" style="color:#67e8f9;"></i> Bulk Operations</span>
                 </div>
                 <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:0.5rem;">
                     <button onclick="openDemoModal()" class="btn btn-white"><i class="fas fa-paper-plane"></i> Schedule a Demo</button>
@@ -610,108 +641,222 @@ body {
         <div class="slide-body">
             <div class="section-label"><i class="fas fa-th-large"></i> Platform Overview</div>
             <div class="slide-title">What is IntForge?</div>
-            <p class="slide-subtitle">A purpose-built platform that streamlines and enhances every aspect of your Oracle Integration Cloud operations — from day-one setup to ongoing management.</p>
+            <p class="slide-subtitle">OIC already stores the data. IntForge is the layer on top that makes it useful &mdash; alerts, health scores, bulk actions and documents you would otherwise build by hand.</p>
             <div class="card-grid cols-2">
-                <div class="deck-card">
-                    <div class="deck-card-icon"><i class="fas fa-th-large"></i></div>
-                    <h3>Unified Dashboard</h3>
-                    <p>Monitor all critical aspects of OIC from a single, intuitive interface — errors, schedules, agents, and certifications in one place.</p>
-                </div>
-                <div class="deck-card">
-                    <div class="deck-card-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Accelerated Development</h3>
-                    <p>Auto-generate TDD documentation, Postman collections, test cases, and flow diagrams at the click of a button.</p>
-                </div>
-                <div class="deck-card">
-                    <div class="deck-card-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Smart Automation</h3>
-                    <p>One-click deployment and GitHub integration eliminate manual steps and accelerate your release cycles.</p>
-                </div>
-                <div class="deck-card">
-                    <div class="deck-card-icon"><i class="fas fa-chart-bar"></i></div>
-                    <h3>Advanced Monitoring</h3>
-                    <p>Real-time tracking, intelligent error management, team assignment, and full collaboration tools built in.</p>
-                </div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Alerts, Not Just Data</h3><p>Cards turn red the moment an agent is down, a certificate expires, the file server passes 80% or emails are suppressed &mdash; you do not have to open ten console pages to find out.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-eye"></i></div><h3>Insight on Top of OIC&rsquo;s Data</h3><p>Health scores per integration, colour-coded certificates, run calendars and timelines, and trend charts &mdash; the same data, finally readable at a glance.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>The Whole Estate, Not One Integration</h3><p>Bulk activate, trace and download logs for dozens of integrations at once, monitor a chosen set, and find the ones that have not run in 32 days.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-file-alt"></i></div><h3>Things OIC Does Not Do at All</h3><p>Generated design documents and release notes, call graphs, side-by-side comparison of integrations, Swagger and Postman generation, and an AI agent that answers questions about your instance.</p></div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 3: SHOWCASE ── -->
+    <!-- ── SLIDE 2b: BEYOND OIC ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
                 <img src="Logo.webp" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
-            <span class="slide-header-title">Platform Showcase</span>
+            <span class="slide-header-title">Beyond the Console</span>
         </div>
         <div class="slide-body">
-            <div class="section-label"><i class="fas fa-camera"></i> Platform Showcase</div>
-            <div class="slide-title">See IntForge in Action</div>
-            <p class="slide-subtitle" style="margin-bottom:1rem;">Explore the intuitive interface and powerful features — click any image to enlarge.</p>
-            <div class="image-gallery">
-                <div class="gallery-item"><div class="gallery-item-image"><img src="dashboard.png" alt="Dashboard Overview" loading="lazy"></div><div class="gallery-item-caption">Dashboard Desktop Overview</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="DailyAnalysis.png" alt="Daily Analysis" loading="lazy"></div><div class="gallery-item-caption">Daily Analysis Overview</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="MobileSidebar.png" alt="Mobile Sidebar" loading="lazy"></div><div class="gallery-item-caption">Mobile Sidebar Overview</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="MobileMainContainer.png" alt="Mobile Dashboard" loading="lazy"></div><div class="gallery-item-caption">Mobile Dashboard View</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="IntegrationsOverView.png" alt="Integrations Overview" loading="lazy"></div><div class="gallery-item-caption">Integrations Overview</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="CertificationOverView.png" alt="Certifications" loading="lazy"></div><div class="gallery-item-caption">Certifications Overview</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="ScheduledIntegrations.png" alt="Scheduled Integrations" loading="lazy"></div><div class="gallery-item-caption">Scheduled Integrations Run</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="SchAnalysis.png" alt="Scheduled Analysis" loading="lazy"></div><div class="gallery-item-caption">Scheduled Integrations Analysis</div></div>
-                <div class="gallery-item"><div class="gallery-item-image"><img src="Agents.png" alt="Agents" loading="lazy"></div><div class="gallery-item-caption">Agents Overview</div></div>
-            </div>
+            <div class="section-label"><i class="fas fa-layer-group"></i> The Differentiator</div>
+            <div class="slide-title">OIC Gives You the Data. IntForge Adds the Insight.</div>
+            <p class="slide-subtitle">Certificates, agents and monitoring are already in OIC. Here is what IntForge does on top of them.</p>
+            <table class="compare-table"><thead><tr><th>Area</th><th>What OIC gives you</th><th>What IntForge adds</th></tr></thead><tbody><tr><td class="ct-area"><i class="fas fa-certificate"></i> Certificates</td><td class="ct-oic">A list of certificates and their expiry dates.</td><td class="ct-forge">Colour-coded cards: <span class="chip chip-red">expired in red</span> <span class="chip chip-amber">expiring within 30 days in amber</span> <span class="chip chip-green">valid in green</span>, with a summary of how many need attention.</td></tr><tr><td class="ct-area"><i class="fas fa-chart-line"></i> Monitoring</td><td class="ct-oic">Run counts and instance lists, one integration at a time.</td><td class="ct-forge">A <strong>health score</strong> per integration (Healthy, Warning, Critical) with the critical ones first. Monitor <strong>a chosen set</strong> by integration, version, time window and error threshold, or by business functionality.</td></tr><tr><td class="ct-area"><i class="fas fa-search-plus"></i> Instance analysis</td><td class="ct-oic">Instances listed and opened individually.</td><td class="ct-forge">Successful and failed runs analysed together: filter by duration, record count and tracking variables, with charts for volume, endpoints and performance.</td></tr><tr><td class="ct-area"><i class="fas fa-download"></i> Logs</td><td class="ct-oic">Activity stream of one instance at a time.</td><td class="ct-forge">Select <strong>many integrations</strong> and download all their instance logs in <strong>one ZIP</strong>, search across them, and have <strong>AI explain the log</strong>.</td></tr><tr><td class="ct-area"><i class="fas fa-bolt"></i> Operations</td><td class="ct-oic">Activate, deactivate or trace one integration at a time.</td><td class="ct-forge">Bulk activate, deactivate and trace; see which integrations have not run in 32 days; manage integrations during a Fusion outage.</td></tr><tr><td class="ct-area"><i class="fas fa-file-alt"></i> Documentation</td><td class="ct-oic">Written by hand after the fact.</td><td class="ct-forge">Technical design documents, release notes, call graphs, Swagger docs and Postman collections generated from the live instance.</td></tr></tbody></table>
         </div>
     </div>
 
-    <!-- ── SLIDE 4: DEVELOPMENT ── -->
+    <!-- ── SLIDE 4: THE MENU ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
                 <img src="Logo.webp" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
-            <span class="slide-header-title">Development Features</span>
+            <span class="slide-header-title">The Full Menu</span>
         </div>
         <div class="slide-body">
-            <div class="section-label"><i class="fas fa-code"></i> Development</div>
-            <div class="slide-title">Development Features</div>
-            <p class="slide-subtitle">Everything your OIC &amp; VBCS team needs to build, document and ship faster.</p>
+            <div class="section-label"><i class="fas fa-bars"></i> Everything in the Menu</div>
+            <div class="slide-title">35 Tools, 11 Menu Groups</div>
+            <p class="slide-subtitle">Every item in the IntForge sidebar, grouped the way teams work.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>One-Click Deployment</h3><p>Deploy integrations instantly with fully automated processes — no manual steps.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-file-alt"></i></div><h3>TDD Generation</h3><p>Automatic Technical Design Document creation — accurate, consistent, zero effort.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-project-diagram"></i></div><h3>Flow Diagrams</h3><p>Visual representation of integration flows generated automatically from your OIC.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>Postman Collections</h3><p>Auto-generate complete API collections for testing — ready to import and run.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-check-circle"></i></div><h3>Test Case Generation</h3><p>Automated Postman test cases generated at your fingertips — no manual writing.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fab fa-github"></i></div><h3>GitHub Integration</h3><p>Seamless source control integration for CI/CD workflows and version tracking.</p></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-home"></i> Home</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Dashboard</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-drafting-compass"></i> Build &amp; Design</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">OIC Design Time</span><span class="pill">Call Graph</span><span class="pill">Compare Integrations</span><span class="pill">Release Notes</span><span class="pill">Generate TDD</span><span class="pill">API Swagger Documentation</span><span class="pill">Flow Diagram</span><span class="pill">iCal Generator</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-satellite-dish"></i> Monitor &amp; Diagnose</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Monitor Integrations</span><span class="pill">Integration Mapper</span><span class="pill">Integration Purpose</span><span class="pill">Download Logs</span><span class="pill">Last Run</span><span class="pill">Tracing</span><span class="pill">OIC File Server</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-cogs"></i> Operations</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Bulk Operations</span><span class="pill">Connection Integrations</span><span class="pill">Fusion Outage Control</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-cloud"></i> Fusion</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Compare FBDI</span><span class="pill">Reports History</span><span class="pill">Fusion Users</span><span class="pill">Fusion Events</span><span class="pill">ESS Monitoring</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-id-badge"></i> IDCS &amp; VBCS</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">IDCS Users</span><span class="pill">Analyze VBCS Code</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-brain"></i> AI</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">Integration Analyzer</span><span class="pill">AI Analyzer</span><span class="pill">Multi AI Chat</span><span class="pill">OIC Agent</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-terminal"></i> Developer Tools</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">OIC API Explorer</span><span class="pill">Fusion API Explorer</span><span class="pill">API Workbench</span></div></div>
+                <div class="deck-card menu-card"><h3><i class="fas fa-book-open"></i> Resources &amp; Admin</h3><div class="pill-row" style="margin:0.5rem 0 0;"><span class="pill">OIC Notes</span><span class="pill">Settings</span></div></div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 5: MONITORING ── -->
+    <!-- ── SLIDE 5: DASHBOARD ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
                 <img src="Logo.webp" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
-            <span class="slide-header-title">Monitoring & Management</span>
+            <span class="slide-header-title">Dashboard</span>
         </div>
         <div class="slide-body">
-            <div class="section-label"><i class="fas fa-satellite-dish"></i> Monitoring</div>
-            <div class="slide-title">Monitoring &amp; Management</div>
-            <p class="slide-subtitle">Full visibility and control over your entire OIC landscape — all in one place.</p>
+            <div class="section-label"><i class="fas fa-chart-pie"></i> Home</div>
+            <div class="slide-title">A Dashboard That Tells You What Needs Attention</div>
+            <p class="slide-subtitle">The console has these pages. IntForge brings them together and adds alerts, colour and charts, so problems come to you.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-line"></i></div><h3>Real-Time Monitoring</h3><p>Track integration health and performance across your entire OIC landscape instantly.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-layer-group"></i></div><h3>Functional Grouping</h3><p>Organise integrations by business functionality for faster navigation and oversight.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-user-tag"></i></div><h3>Error Assignment</h3><p>Delegate errored integrations to specific team members for accountability.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-redo"></i></div><h3>Quick Resubmit</h3><p>Resubmit failed integrations with a single click — no manual intervention needed.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fab fa-microsoft"></i></div><h3>Teams Integration</h3><p>Send run details and alerts directly to Microsoft Teams channels.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-ticket-alt"></i></div><h3>Ticketing System</h3><p>Create support tickets instantly from errors — streamline your support workflow.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Alert Cards</h3><p>Turn red when an agent is down, a certificate is expired or expiring, the file server is over 80% full, or emails are being suppressed. Message totals and failed activations sit beside them.</p><p class="oic-line"><b>OIC alone:</b> each of these lives on a different page that you have to open and check.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-certificate"></i></div><h3>Certificates You Can Read at a Glance</h3><p>One card per certificate with a summary of what needs attention, and CSV export.</p><div class="chip-row"><span class="chip chip-red">Expired</span><span class="chip chip-amber">Expiring in 30 days</span><span class="chip chip-green">Valid</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-calendar-alt"></i></div><h3>Scheduled Runs, Visualised</h3><p>Every upcoming run across all scheduled integrations as a list, a calendar and a timeline, full screen, with CSV export.</p><p class="oic-line"><b>OIC alone:</b> schedules are viewed integration by integration.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-line"></i></div><h3>Usage Trends</h3><p>Hourly (last 24 hours) and daily message trends as charts you can switch between stacked, grouped and line, with CSV export.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-bar"></i></div><h3>Integrations Overview</h3><p>Charts of integrations by status, integration patterns and adapter usage, plus a table of who created what &mdash; the shape of the estate in one page.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-server"></i></div><h3>Agents, File Server, Instance Properties</h3><p>Agent group status, file server quota and rights, and instance properties (IPs hidden until you reveal them) next to everything else.</p></div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 6: AI ── -->
+    <!-- ── SLIDE 6: DESIGN ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Design &amp; Explore</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-drafting-compass"></i> Build &amp; Design</div>
+            <div class="slide-title">See How Everything Fits Together</div>
+            <p class="slide-subtitle">OIC shows you one integration at a time. These tools show the whole picture and what changed.</p>
+            <div class="card-grid cols-2">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-project-diagram"></i></div><h3>Call Graph</h3><p>Which integrations call which &mdash; and which call them &mdash; with the connections and target systems they use. Export as PNG or draw.io, or generate for every integration at once. Know the impact of a change before you make it.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-columns"></i></div><h3>Compare Integrations</h3><p>Compare two versions of an integration, or two projects, from IAR files: flow diagrams side by side (and full screen), including orchestrations with multiple endpoints. See exactly what changed between releases.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-sitemap"></i></div><h3>Flow Diagram</h3><p>Load an active integration and see its adapter flow as a diagram, or design a new one from scratch and export it.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tools"></i></div><h3>OIC Design Time</h3><p>Integrations, connections, lookups and agents browsable together &mdash; plus <strong>download every integration (IAR) in one go</strong>, the <strong>metadata of all connections</strong>, and <strong>all lookups</strong> as ZIP or CSV. Perfect for backups, audits and migrations.</p><p class="oic-line"><b>OIC alone:</b> download an archive, a connection or a lookup one at a time.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 7: DOCUMENT ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Document &amp; Generate</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-file-alt"></i> Build &amp; Design</div>
+            <div class="slide-title">Documentation That Writes Itself</div>
+            <p class="slide-subtitle">OIC holds the design but not the paperwork. Select the integrations, click Generate &mdash; it runs in the background and notifies you when ready.</p>
+            <div class="card-grid cols-2">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-file-word"></i></div><h3>Generate TDD</h3><p>A technical design document <strong>per integration</strong>, with its flow diagram and draw.io diagram, and the connections, agents, lookups and libraries it depends on. Select many, get one ZIP. Built from the live instance, so it matches what is deployed.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-clipboard-list"></i></div><h3>Release Notes</h3><p>Pick active integrations and projects and get release notes with the integration table, every connection&rsquo;s properties and the lookup data, as Word documents.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>API Swagger and Postman</h3><p>Browse an active integration&rsquo;s Swagger spec and generate a ready-to-import Postman collection, environment and test suite &mdash; for one integration or in bulk.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-calendar-alt"></i></div><h3>iCal Generator</h3><p>Build iCal recurrence rules for scheduled integrations without learning the syntax.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 8: MONITOR ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Monitor</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-satellite-dish"></i> Monitor &amp; Diagnose</div>
+            <div class="slide-title">Monitoring That Goes Beyond the Counts</div>
+            <p class="slide-subtitle">Health scores, your own set of integrations, and analysis of every instance &mdash; with the actions to fix problems on the same screen.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-heartbeat"></i></div><h3>Health Scores</h3><p>Every integration scored from its success and error rates, with the critical ones listed first for immediate attention.</p><div class="chip-row"><span class="chip chip-green">Healthy</span><span class="chip chip-amber">Warning</span><span class="chip chip-red">Critical</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-filter"></i></div><h3>Monitor Your Own Set</h3><p>Choose the integrations, versions, time window and minimum error count you care about, and the whole dashboard follows.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-layer-group"></i></div><h3>Monitor by Functionality</h3><p>Group integrations into business functions with the Integration Mapper and analyse each function, or each project, as one unit.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search-plus"></i></div><h3>Instance Analysis</h3><p>Successful and failed runs analysed together: filter by duration, record count and tracking variables, with charts for volume, endpoints and performance.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tasks"></i></div><h3>Error Actions</h3><p>Resubmit, assign to a teammate, send to Microsoft Teams, raise a ticket, or run <strong>multi-model AI analysis</strong> &mdash; several AI models explain the same error side by side &mdash; straight from the error row.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-history"></i></div><h3>Audit Records</h3><p>Review audit records of changes in the instance next to runs and errors.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 8b: DIAGNOSE ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Diagnose</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-tools"></i> Monitor &amp; Diagnose</div>
+            <div class="slide-title">Diagnose in Bulk, Not One by One</div>
+            <p class="slide-subtitle">The console works on one integration at a time. These tools work on the whole estate.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-download"></i></div><h3>Download Logs, Then Understand Them</h3><p>Select many integrations and download all their activity logs in one ZIP, search across them, and let <strong>AI explain the log</strong> &mdash; what the flow did and where it went wrong.</p><p class="oic-line"><b>OIC alone:</b> open and download one instance&rsquo;s log at a time.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bug"></i></div><h3>Bulk Tracing</h3><p>Switch Debug tracing on or off for many integrations at once &mdash; and back off again, so tracing is never left running.</p><p class="oic-line"><b>OIC alone:</b> tracing is switched per integration.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-clock"></i></div><h3>Last Run</h3><p>The last run time and instance id of every active integration over 32 days, so integrations that are active but not in use stand out.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-map"></i></div><h3>Integration Mapper</h3><p>Map integrations to business functionalities (upload and download as Excel) so monitoring, outages and reports can work by function, not by name.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tag"></i></div><h3>Integration Purpose</h3><p>OIC&rsquo;s own AI summary of every active integration, collected for all of them in the background &mdash; an instant catalogue of what each one does.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-folder-open"></i></div><h3>OIC File Server</h3><p><strong>Save directories as favourites</strong> and see the files in them (names, not content) from IntForge, plus file server configuration, rights and quota with a warning as it fills.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 9: OPERATIONS ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Operations</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-cogs"></i> Operations</div>
+            <div class="slide-title">Change Many Things Safely</div>
+            <p class="slide-subtitle">Do in one action what the console makes you do one integration at a time.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-power-off"></i></div><h3>Bulk Operations</h3><p>Select dozens of integrations and activate or deactivate them together, then verify OIC now shows each one in its new state.</p><p class="oic-line"><b>OIC alone:</b> activate or deactivate one integration at a time.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-link"></i></div><h3>Connection Integrations</h3><p>Pick a connection and see every integration that uses it and its status. After you update the connection, <strong>reactivate all of them &mdash; even more than 100</strong>, in batches. CSV export.</p><p class="oic-line"><b>OIC alone:</b> reactivates up to 100 integrations when a connection is updated.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-exclamation-triangle"></i></div><h3>Fusion Outage Control</h3><p>Record the integrations to act on during a planned or unplanned Fusion outage, with their functionality and state, and manage them as one list.</p><div class="chip-row"><span class="chip chip-teal">Not in the OIC console</span></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 10: FUSION ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Fusion &amp; IDCS</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-cloud"></i> Fusion &amp; IDCS</div>
+            <div class="slide-title">Fusion and Identity, Next to OIC</div>
+            <p class="slide-subtitle">The people running integrations also check Fusion data loads, users and reports. IntForge puts those checks in the same workspace.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-exchange-alt"></i></div><h3>Compare FBDI</h3><p>Upload two FBDI template ZIP files and see file, column and row differences with a quick status &mdash; no more eyeballing spreadsheets.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-history"></i></div><h3>Reports History</h3><p>BIP report run history with daily trends, execution-time analysis, reports slower than a threshold you set highlighted, and upcoming scheduled runs.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-user-friends"></i></div><h3>Fusion Users</h3><p>Look up a user&rsquo;s roles, compare two users, or compare the same user across two environments to find role gaps.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bullhorn"></i></div><h3>Fusion Events</h3><p>Business events catalog, subscriptions and event queue status in one browsable place.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-stopwatch"></i></div><h3>ESS Monitoring (preview)</h3><p>Health of Fusion ESS jobs: failures, runtime regressions, SLA and stuck-job risk.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-users"></i></div><h3>IDCS Users</h3><p>See each user&rsquo;s <strong>roles and status</strong> &mdash; active, deactivated or locked &mdash; with filters and counts, straight from IntForge. No need to log in to IDCS.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 11: AI ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
@@ -722,20 +867,66 @@ body {
         </div>
         <div class="slide-body">
             <div class="section-label"><i class="fas fa-brain"></i> AI Powered</div>
-            <div class="slide-title">AI-Powered Solutions</div>
-            <p class="slide-subtitle">Intelligent tools that analyse, generate, and accelerate — built directly into your OIC workflow.</p>
+            <div class="slide-title">AI That Knows Your Instance</div>
+            <p class="slide-subtitle">General AI chat does not know your integrations. These tools work on your real OIC data, on your own session.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-robot"></i></div><h3>AI-Based TDD for VBCS</h3><p>Auto-generate comprehensive Technical Design Docs for VBCS applications using advanced AI.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search"></i></div><h3>AI FBDI/HDL Analysis</h3><p>Intelligent analysis of failed File-Based Data Import &amp; HCM Data Loader processes with root cause recommendations.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-random"></i></div><h3>Multi-LLM Analysis</h3><p>Compare error analysis from different LLM models side-by-side for deeper insights.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-user-shield"></i></div><h3>Fusion Role Comparison</h3><p>Compare user roles across environments — identify discrepancies and ensure consistency.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-bar"></i></div><h3>ESS Job &amp; BIP Intelligence</h3><p>Track ESS job history and BIP report runs with predictive insights and analytics.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-tags"></i></div><h3>Error Categorisation</h3><p>Intelligent classification of errors by type and severity with historical trend tracking.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-robot"></i></div><h3>OIC Agent</h3><p>Ask in plain language about runtime instances, errors, schedules, agents or an integration&rsquo;s flow design. It calls OIC for you and answers from real data &mdash; read-only.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-random"></i></div><h3>AI Analyzer</h3><p>Paste an error and compare up to four AI models&rsquo; analyses side by side, so you are not relying on one model&rsquo;s guess.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-search"></i></div><h3>Integration Analyzer</h3><p>AI-powered technical analysis of an integration from its design.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-comments"></i></div><h3>Multi AI Chat</h3><p>Chat with several AI models at once and compare their answers, with conversations kept per person and per instance.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-code"></i></div><h3>VBCS Code Browser</h3><p>Upload a VBCS export and browse its structure with syntax-highlighted file viewing.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-sliders-h"></i></div><h3>Choose Your Models</h3><p>Each person can pick the AI model per feature in Settings, and admins can assign models per user.</p></div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 7: BENEFITS ── -->
+    <!-- ── SLIDE 12: DEVELOPER ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Developer Tools</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-terminal"></i> Developer Tools &amp; Resources</div>
+            <div class="slide-title">Built for Builders</div>
+            <p class="slide-subtitle">API references, a test workbench and a knowledge base for the people building on Oracle.</p>
+            <div class="card-grid cols-2">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-plug"></i></div><h3>OIC API Explorer</h3><p>Browse the OIC OpenAPI specification by category.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-cloud"></i></div><h3>Fusion API Explorer</h3><p>Interactive Oracle Cloud API documentation across multiple modules.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-flask"></i></div><h3>API Workbench</h3><p>A Postman-like tester for Fusion APIs, with bulk testing.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-book-open"></i></div><h3>OIC Notes</h3><p>Service limits, editions, roles, best practices and anti-patterns in one reference.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 13: GOVERNANCE ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.webp" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">Governance &amp; Admin</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-user-shield"></i> Admin &amp; Governance</div>
+            <div class="slide-title">Control Who Can Do What</div>
+            <p class="slide-subtitle">Teams share one instance of IntForge without sharing access, sessions or results.</p>
+            <div class="card-grid cols-3">
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-user-lock"></i></div><h3>Access Control</h3><p>Allow people per OIC instance. Access is denied unless it has been granted.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-toggle-on"></i></div><h3>Feature Access</h3><p>Switch individual tools on or off for each person and instance.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-clipboard-check"></i></div><h3>Activity Log</h3><p>An audit trail of who did what and when, kept in a separate admin console.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-brain"></i></div><h3>AI Model Assignment</h3><p>Assign the AI model each person uses for each AI feature.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Background Jobs &amp; Notifications</h3><p>Long tasks run in the background with live progress and a notification when they finish &mdash; you can keep working.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-cog"></i></div><h3>Settings</h3><p>Configure your environment and personal preferences, including your AI models.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 14: BENEFITS ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
@@ -749,17 +940,17 @@ body {
             <div class="slide-title">Why Teams Choose IntForge</div>
             <p class="slide-subtitle">Built for Oracle OIC &amp; VBCS teams who need speed, accuracy, and visibility without compromise.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-rocket"></i></div><h3>Faster Deployment</h3><p>Accelerate release cycles with one-click deployment and automated CI/CD workflows.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Friendly</h3><p>Access and manage OIC operations on-the-go from any device, anywhere.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bullseye"></i></div><h3>Increased Accuracy</h3><p>Eliminate human errors with automated documentation, testing, and deployment.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-users"></i></div><h3>Better Collaboration</h3><p>Streamline team workflows with assignment, notification, and escalation features.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-eye"></i></div><h3>Enhanced Visibility</h3><p>Comprehensive dashboard for complete OIC oversight — nothing hidden, nothing missed.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-shield-alt"></i></div><h3>Improved Reliability</h3><p>Proactive monitoring, quick error resolution, and role health checks reduce downtime.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Problems Find You</h3><p>Colour-coded certificates, red alert cards and health scores surface what needs attention before users report it.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>Hours Become Minutes</h3><p>Bulk activation, tracing and log download, and generated documents, replace repeated clicking and writing.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bullseye"></i></div><h3>Documents That Are Right</h3><p>TDDs, release notes and call graphs are built from the live instance, so they match what is deployed.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-users"></i></div><h3>Better Collaboration</h3><p>Assign errors, alert Teams, raise tickets and share generated documents.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Friendly</h3><p>Check alerts and manage OIC operations on the go from any device.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-shield-alt"></i></div><h3>Lower Risk</h3><p>Per-user access, an audit trail, and bulk actions you can verify afterwards.</p></div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 8: IMPACT ── -->
+    <!-- ── SLIDE 15: IMPACT ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
@@ -778,30 +969,30 @@ body {
                     <div class="stat-label">Reduction in documentation effort with AI-powered TDD generation</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">1-Click</div>
-                    <div class="stat-label">Deployment, resubmit, and Postman collection generation</div>
+                    <div class="stat-number">35</div>
+                    <div class="stat-label">Tools across OIC, Fusion, IDCS and VBCS in one workspace</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number">360°</div>
-                    <div class="stat-label">OIC visibility — errors, schedules, agents, certifications</div>
+                    <div class="stat-number">360&deg;</div>
+                    <div class="stat-label">OIC visibility &mdash; runs, errors, schedules, agents, certificates, last run</div>
                 </div>
             </div>
             <div class="card-grid cols-2" style="margin-top:1rem;">
                 <div class="deck-card">
                     <div class="deck-card-icon"><i class="fas fa-lock"></i></div>
-                    <h3>Enterprise Grade Security</h3>
-                    <p>Role-based access control, environment-level isolation, and full audit trails.</p>
+                    <h3>Governed Access</h3>
+                    <p>Per-user, per-instance access control, feature-level switches and an activity log.</p>
                 </div>
                 <div class="deck-card">
                     <div class="deck-card-icon"><i class="fas fa-plug"></i></div>
                     <h3>Oracle Native</h3>
-                    <p>Built specifically for Oracle OIC and VBCS — no generic middleware, no workarounds.</p>
+                    <p>Built specifically for Oracle OIC, Fusion, IDCS and VBCS &mdash; no generic middleware, no workarounds.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── SLIDE 9: GET STARTED ── -->
+    <!-- ── SLIDE 16: GET STARTED ── -->
     <div class="slide slide-hero">
         <div class="slide-header">
             <div class="slide-header-logo">
@@ -817,7 +1008,7 @@ body {
                 </div>
                 <p class="hero-tagline">OIC Activities, Simplified.</p>
                 <h1 class="hero-h1">Ready to Transform Your OIC Operations?</h1>
-                <p class="hero-sub">Join the teams already using IntForge to monitor, document, and deploy faster than ever before.</p>
+                <p class="hero-sub">Join the teams already using IntForge to monitor, document and operate their OIC estate faster than ever before.</p>
                 <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;">
                     <button onclick="openDemoModal()" class="btn btn-white"><i class="fas fa-paper-plane"></i> Schedule a Demo</button>
                     <a href="https://www.intsphere.com/intforge.html" class="btn btn-ghost-white"><i class="fas fa-external-link-alt"></i> Visit IntForge Page</a>
@@ -827,7 +1018,7 @@ body {
         </div>
     </div>
 
-    <!-- ── SLIDE 10: CONTACT ── -->
+    <!-- ── SLIDE 17: CONTACT ── -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-header-logo">
