@@ -242,13 +242,12 @@ body {
 .menu-card h3 i { color: var(--primary); font-size: 0.95rem; width: 18px; text-align: center; }
 .menu-card .pill { padding: 0.22rem 0.7rem; font-size: 0.74rem; }
 
-.intro-grid .deck-card p { font-size: 0.8rem; line-height: 1.5; margin-top: 0.3rem; }
-.ai-band { background: var(--grad-main); border-radius: 18px; padding: 1rem 1.4rem 1.1rem; margin-top: 0.9rem; color: #e0f7fa; box-shadow: var(--shadow-blue); }
-.ai-band h3 { font-family: 'Outfit', sans-serif; color: #67e8f9; font-size: 1rem; margin-bottom: 0.55rem; display: flex; align-items: center; gap: 8px; }
-.ai-band ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem 1.4rem; font-size: 0.78rem; line-height: 1.5; }
-.ai-band li b { color: #fff; }
-@media(max-width:900px) { .ai-band ul { grid-template-columns: repeat(2, 1fr); } }
-@media(max-width:600px) { .ai-band ul { grid-template-columns: 1fr; } }
+.intro-layout { display: grid; grid-template-columns: minmax(260px, 0.8fr) 1.2fr; gap: 2rem; align-items: center; min-height: 100%; }
+.intro-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem; }
+.intro-hint i { color: var(--primary); margin-right: 5px; }
+.intro-figure { margin: 0; text-align: center; }
+.intro-figure img { max-width: 100%; max-height: calc(100vh - 170px); max-height: calc(100dvh - 170px); width: auto; height: auto; background: #fff; border: 1px solid var(--border-subtle); border-radius: 16px; box-shadow: var(--shadow-md); cursor: zoom-in; }
+@media(max-width:900px) { .intro-layout { grid-template-columns: 1fr; gap: 1rem; } .intro-figure img { max-height: none; width: 100%; } }
 
 /* ── STAT BOXES ── */
 .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.25rem 0; }
@@ -580,30 +579,29 @@ body {
     <ul>
         <li><a href="#" data-slide="0" class="nav-link">Home</a></li>
         <li><a href="#" data-slide="1" class="nav-link">Introducing IntForge</a></li>
-        <li><a href="#" data-slide="2" class="nav-link">Platform Overview</a></li>
-        <li><a href="#" data-slide="3" class="nav-link">Beyond the Console</a></li>
-        <li><a href="#" data-slide="4" class="nav-link">The Full Menu</a></li>
-        <li><a href="#" data-slide="5" class="nav-link">Dashboard</a></li>
-        <li><a href="#" data-slide="6" class="nav-link">Design &amp; Explore</a></li>
-        <li><a href="#" data-slide="7" class="nav-link">Document &amp; Generate</a></li>
-        <li><a href="#" data-slide="8" class="nav-link">Monitoring</a></li>
-        <li><a href="#" data-slide="9" class="nav-link">Diagnose in Bulk</a></li>
-        <li><a href="#" data-slide="10" class="nav-link">Operations</a></li>
-        <li><a href="#" data-slide="11" class="nav-link">Fusion &amp; IDCS</a></li>
-        <li><a href="#" data-slide="12" class="nav-link">FusionConnect</a></li>
-        <li><a href="#" data-slide="13" class="nav-link">AI-Powered Solutions</a></li>
-        <li><a href="#" data-slide="14" class="nav-link">Developer Tools</a></li>
-        <li><a href="#" data-slide="15" class="nav-link">Governance &amp; Admin</a></li>
-        <li><a href="#" data-slide="16" class="nav-link">Key Benefits</a></li>
-        <li><a href="#" data-slide="17" class="nav-link">The IntForge Difference</a></li>
-        <li><a href="#" data-slide="18" class="nav-link">Get Started</a></li>
-        <li><a href="#" data-slide="19" class="nav-link">Contact Us</a></li>
+        <li><a href="#" data-slide="2" class="nav-link">Beyond the Console</a></li>
+        <li><a href="#" data-slide="3" class="nav-link">The Full Menu</a></li>
+        <li><a href="#" data-slide="4" class="nav-link">Dashboard</a></li>
+        <li><a href="#" data-slide="5" class="nav-link">Design &amp; Explore</a></li>
+        <li><a href="#" data-slide="6" class="nav-link">Document &amp; Generate</a></li>
+        <li><a href="#" data-slide="7" class="nav-link">Monitoring</a></li>
+        <li><a href="#" data-slide="8" class="nav-link">Diagnose in Bulk</a></li>
+        <li><a href="#" data-slide="9" class="nav-link">Operations</a></li>
+        <li><a href="#" data-slide="10" class="nav-link">Fusion &amp; IDCS</a></li>
+        <li><a href="#" data-slide="11" class="nav-link">FusionConnect</a></li>
+        <li><a href="#" data-slide="12" class="nav-link">AI-Powered Solutions</a></li>
+        <li><a href="#" data-slide="13" class="nav-link">Developer Tools</a></li>
+        <li><a href="#" data-slide="14" class="nav-link">Governance &amp; Admin</a></li>
+        <li><a href="#" data-slide="15" class="nav-link">Key Benefits</a></li>
+        <li><a href="#" data-slide="16" class="nav-link">The IntForge Difference</a></li>
+        <li><a href="#" data-slide="17" class="nav-link">Get Started</a></li>
+        <li><a href="#" data-slide="18" class="nav-link">Contact Us</a></li>
     </ul>
 </div>
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- Counter & Progress -->
-<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">20</span></div>
+<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">19</span></div>
 <div class="progress-bar" id="progressBar"></div>
 <div class="swipe-hint">← Swipe to navigate →</div>
 
@@ -652,39 +650,16 @@ body {
             <span class="slide-header-title">Introducing IntForge</span>
         </div>
         <div class="slide-body">
-            <div class="section-label"><i class="fas fa-rocket"></i> An IntSphere Product</div>
-            <div class="slide-title">Introducing IntForge</div>
-            <p class="slide-subtitle">Built to simplify OIC activities, from monitoring and diagnosis to bulk downloads, operations, documentation and Fusion checks &mdash; in one workspace for OIC, Fusion, IDCS and VBCS teams.</p>
-            <div class="card-grid cols-3 intro-grid">
-                <div class="deck-card menu-card"><h3><i class="fas fa-satellite-dish"></i> Monitoring</h3><p>Red alert cards when an agent is down, a certificate expires or emails are suppressed. A health score per integration, run stats visualised across multiple graphs, and monitoring of just the set you care about.</p></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-box-open"></i> Bulk Downloads &amp; Search</h3><p>Download all integrations in one go, the metadata of all connections, and search across all lookups &mdash; without opening each one.</p></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-bug"></i> Diagnose in Bulk</h3><p>Download logs for many integrations in one ZIP, trace many integrations at once, and spot integrations that have not run in 32 days.</p></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-bolt"></i> Operate at Scale</h3><p>Bulk activate and deactivate, reactivate everything on a connection even above 100, and manage integrations around a Fusion outage.</p></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-rocket"></i> Post-Development, Faster</h3><p>Design documents, release notes, call graphs, Swagger and Postman collections generated from the live instance, plus side-by-side version comparison.</p></div>
-                <div class="deck-card menu-card"><h3><i class="fas fa-cloud"></i> Fusion &amp; Identity</h3><p>Compare FBDI files, check Fusion user roles and IDCS status, browse events and BIP report history. <strong>FusionConnect</strong> adds a SQL editor, schema browser and BI Publisher reports.</p></div>
-            </div>
-            <div class="ai-band"><h3><i class="fas fa-brain"></i> AI built into the workflow</h3><ul><li><b>OIC Agent:</b> ask in plain language about instances, errors, schedules, agents or flow design.</li><li><b>Multi-model error analysis:</b> compare several AI models on the same error, side by side.</li><li><b>AI log explanation:</b> download the logs, then let AI explain what the flow did and where it failed.</li><li><b>AI query assistant (FusionConnect):</b> get help writing Fusion SQL inside the editor.</li><li><b>Integration Analyzer &amp; Multi AI Chat:</b> technical analysis of an integration, and chat with several models at once.</li><li><b>Your choice of model:</b> pick the model per feature; admins can assign models per user.</li></ul></div>
-        </div>
-    </div>
-
-    <!-- ── SLIDE 2: PLATFORM OVERVIEW ── -->
-    <div class="slide">
-        <div class="slide-header">
-            <div class="slide-header-logo">
-                <img src="Logo.png" onerror="this.style.display='none'">
-                <span class="slide-header-brand">IntForge</span>
-            </div>
-            <span class="slide-header-title">Platform Overview</span>
-        </div>
-        <div class="slide-body">
-            <div class="section-label"><i class="fas fa-th-large"></i> Platform Overview</div>
-            <div class="slide-title">What is IntForge?</div>
-            <p class="slide-subtitle">Two jobs in one workspace: simplify the monitoring of your OIC activities, and speed up everything that comes after development.</p>
-            <div class="card-grid cols-2">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-satellite-dish"></i></div><h3>Monitoring, Simplified</h3><p>Alerts that turn red when an agent is down, a certificate expires or the file server fills; a health score per integration; multi-graph analysis of instances; and a view of what has not run in 32 days.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-life-ring"></i></div><h3>Diagnose and Resolve Faster</h3><p>Bulk log download with AI to explain the log, multi-model AI analysis of errors, and email, ticket or Teams straight from the error row &mdash; so problems get fixed, not just found.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-rocket"></i></div><h3>Post-Development, Faster</h3><p>After the build comes the paperwork and the rollout. Generate design documents, release notes, call graphs, Swagger and Postman collections from the live instance, and compare versions side by side.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>Operate Without the Repetition</h3><p>Bulk activate, deactivate and trace dozens of integrations, reactivate everything on a connection even above 100, and manage integrations around a Fusion outage.</p></div>
+            <div class="intro-layout">
+                <div class="intro-text">
+                    <div class="section-label"><i class="fas fa-rocket"></i> An IntSphere Product</div>
+                    <div class="slide-title">Introducing IntForge</div>
+                    <p class="slide-subtitle">Built to simplify OIC activities, from monitoring and diagnosis to bulk downloads, operations, documentation and Fusion checks &mdash; in one workspace for OIC, Fusion, IDCS and VBCS teams.</p>
+                    <p class="intro-hint"><i class="fas fa-search-plus"></i> Click the diagram to enlarge it.</p>
+                </div>
+                <figure class="intro-figure">
+                    <img src="IntForgeByIntSphere.png" alt="IntForge by IntSphere: OIC, Fusion, IDCS and VBCS feed one workspace with monitoring, bulk diagnosis and operations, automatic documentation, Fusion and IDCS tools, an AI assistant, file server, IAR comparison, bulk export and call graph analysis, with governance on top, delivering one place to monitor, visual insights and hours turned into minutes." loading="lazy">
+                </figure>
             </div>
         </div>
     </div>
@@ -1238,7 +1213,7 @@ document.querySelectorAll('.mobile-nav .nav-link').forEach(l => {
 // ── LIGHTBOX ──
 const lightbox = document.getElementById('imageLightbox');
 const lbImg    = document.getElementById('lightboxImg');
-document.querySelectorAll('.gallery-item-image img').forEach(img => {
+document.querySelectorAll('.gallery-item-image img, .intro-figure img').forEach(img => {
     img.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; lightbox.classList.add('active'); });
 });
 document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
