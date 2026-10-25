@@ -37,12 +37,13 @@ body {
     background: #fff;
     color: var(--text);
     height: 100vh;
+    height: 100dvh;           /* phones: the visible height, not the height behind the browser's address bar */
     overflow: hidden;
     line-height: 1.6;
 }
 
 /* ── PRESENTATION SHELL ── */
-.presentation { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+.presentation { width: 100%; height: 100vh; height: 100dvh; position: relative; overflow: hidden; }
 
 /* ── SLIDES ── */
 .slide {
@@ -122,9 +123,10 @@ body {
 /* Title slide: full gradient background */
 .slide-hero .slide-body {
     background: var(--grad-main);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: flex-start; justify-content: center;
     text-align: center;
-    overflow: hidden; position: relative;
+    overflow-x: hidden; overflow-y: auto;   /* a short phone screen scrolls instead of cutting the top and bottom off */
+    position: relative;
 }
 .slide-hero .slide-body::before {
     content: '';
@@ -297,7 +299,7 @@ body {
 .btn-outline:hover { background: rgba(8,145,178,0.06); border-color: var(--primary); }
 
 /* ── HERO SLIDE CONTENT ── */
-.hero-content { position: relative; z-index: 1; max-width: 680px; }
+.hero-content { position: relative; z-index: 1; max-width: 680px; margin: auto; }   /* auto margins: centred when it fits, top-aligned and scrollable when it does not */
 .hero-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 1.5rem; }
 .hero-logo img { width: 56px; height: 56px; filter: drop-shadow(0 0 16px rgba(6,182,212,0.6)); }
 .hero-brand {
@@ -549,7 +551,7 @@ body {
     .slide-body { padding: 1.25rem 1rem 5rem; }
     .card-grid, .card-grid.cols-3, .card-grid.cols-2, .card-grid.cols-4 { grid-template-columns: 1fr; }
     .image-gallery { grid-template-columns: 1fr; }
-    .swipe-hint { display: block; }
+    .swipe-hint { display: block; bottom: 50px; }   /* above the slide counter instead of on top of it */
     .stats-grid { grid-template-columns: 1fr; }
     .cta-box { padding: 1.75rem 1.25rem; }
     .hero-h1 { font-size: 1.4rem; }
@@ -1125,6 +1127,16 @@ body {
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
+
+// Older phone browsers without dvh units: size the shell to the height actually visible.
+if (!(window.CSS && CSS.supports && CSS.supports('height', '100dvh'))) {
+    const setAppHeight = () => {
+        document.body.style.height = window.innerHeight + 'px';
+        document.getElementById('presentation').style.height = window.innerHeight + 'px';
+    };
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+}
 let startX = 0, endX = 0;
 const SWIPE = 50;
 
@@ -1155,7 +1167,12 @@ function showSlide(n, dir = 1) {
         updateCounter(); updateProgress(); updateNav();
     }, 200);
 }
-function changeSlide(dir) { showSlide(currentSlide + dir, dir); }
+// The "Swipe to navigate" hint covers the bottom of the slide, so it goes away after a few seconds or the first move.
+const swipeHintEl = document.querySelector('.swipe-hint');
+function hideSwipeHint() { if (swipeHintEl) swipeHintEl.style.display = 'none'; }
+setTimeout(hideSwipeHint, 4000);
+
+function changeSlide(dir) { hideSwipeHint(); showSlide(currentSlide + dir, dir); }
 
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')  changeSlide(-1);
@@ -1178,6 +1195,7 @@ overlay.addEventListener('click', () => { hbg.classList.remove('active'); mNav.c
 document.querySelectorAll('.mobile-nav .nav-link').forEach(l => {
     l.addEventListener('click', e => {
         e.preventDefault();
+        hideSwipeHint();
         showSlide(parseInt(l.dataset.slide));
         hbg.classList.remove('active'); mNav.classList.remove('active'); overlay.classList.remove('active');
     });
