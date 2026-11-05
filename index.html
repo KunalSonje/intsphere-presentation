@@ -578,6 +578,9 @@ body {
 .demo-item-title i { color: var(--primary); width: 16px; text-align: center; }
 .demo-item-time { margin-left: auto; font-weight: 600; font-size: 0.78rem; color: var(--primary-dark); background: rgba(8,145,178,0.1); border-radius: 999px; padding: 0.1rem 0.55rem; }
 .demo-item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+.demo-share { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
+.dt-share { display: inline-flex; align-items: center; gap: .4rem; font: 600 .78rem 'Inter', sans-serif; color: var(--primary-dark); background: #fff; border: 1px solid var(--border-subtle); border-radius: 999px; padding: .35rem .8rem; cursor: pointer; text-decoration: none; }
+.dt-share:hover { border-color: var(--primary); }
 .demo-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
 @media(max-width:900px) { .demo-layout { grid-template-columns: 1fr; } .demo-video-zone video { max-height: none; } }
 </style>
@@ -700,13 +703,18 @@ body {
                 <figure class="demo-video-zone">
                     <video id="demoVideo" controls preload="metadata" playsinline poster="videos/overview-2min.jpg" src="videos/overview-2min.mp4">Your browser does not support embedded video.</video>
                     <figcaption class="demo-now">Now showing: <strong id="demoNow">Overview in 2 minutes</strong></figcaption>
+                    <div class="demo-share">
+                        <a class="dt-share" id="demoOpen" href="watch/overview-2min.html" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Open on its own page</a>
+                        <button type="button" class="dt-share" id="demoCopy"><i class="fas fa-link"></i> Copy link to send</button>
+                        <a class="dt-share" href="watch/index.html" target="_blank" rel="noopener"><i class="fas fa-th-large"></i> All videos</a>
+                    </div>
                 </figure>
                 <div>
                     <div class="demo-list" id="demoList">
                         <button type="button" class="demo-item active" data-video="videos/overview-2min.mp4" data-poster="videos/overview-2min.jpg" data-title="Overview in 2 minutes"><span class="demo-item-title"><i class="fas fa-bolt"></i>Overview in 2 minutes<span class="demo-item-time">1:54</span></span><span class="demo-item-desc">The quick tour: what IntForge solves and how it works.</span></button>
                         <button type="button" class="demo-item" data-video="videos/overview-3min.mp4" data-poster="videos/overview-3min.jpg" data-title="Overview in 3 minutes"><span class="demo-item-title"><i class="fas fa-binoculars"></i>Overview in 3 minutes<span class="demo-item-time">3:43</span></span><span class="demo-item-desc">A fuller tour: monitoring, scheduling, design, error analysis, and Fusion and IDCS checks.</span></button>
                         <button type="button" class="demo-item" data-video="videos/part1-monitor-schedule-design.mp4" data-poster="videos/part1-monitor-schedule-design.jpg" data-title="Part 1: Monitor, schedule and design"><span class="demo-item-title"><i class="fas fa-chart-line"></i>Part 1: Monitor, schedule and design<span class="demo-item-time">13:31</span></span><span class="demo-item-desc">Monitor runs and errors, scheduled integrations, audit records, mapping, and the Fusion and IDCS tools.</span></button>
-                        <button type="button" class="demo-item" data-video="videos/part2-build-operate-extend.mp4" data-poster="videos/part2-build-operate-extend.jpg" data-title="Part 2: Build, operate and extend"><span class="demo-item-title"><i class="fas fa-tools"></i>Part 2: Build, operate and extend<span class="demo-item-time">13:56</span></span><span class="demo-item-desc">Call Graph, compare versions, TDDs and release notes, Swagger, flow diagrams and bulk operations.</span></button>
+                        <button type="button" class="demo-item" data-video="videos/part2-build-operate-extend.mp4" data-poster="videos/part2-build-operate-extend.jpg" data-title="Part 2: Build, operate and extend"><span class="demo-item-title"><i class="fas fa-tools"></i>Part 2: Build, operate and extend<span class="demo-item-time">13:18</span></span><span class="demo-item-desc">Call Graph, compare versions, TDDs and release notes, Swagger, flow diagrams and bulk operations.</span></button>
                         <button type="button" class="demo-item" data-video="videos/vision-and-ai.mp4" data-poster="videos/vision-and-ai.jpg" data-title="Vision and AI"><span class="demo-item-title"><i class="fas fa-brain"></i>Vision and AI<span class="demo-item-time">9:21</span></span><span class="demo-item-desc">What we are building, the problems it solves, and how AI helps at every step.</span></button>
                     </div>
                     <p class="demo-note">Demo data throughout. AI answers shown are sample text.</p>
@@ -1272,8 +1280,19 @@ document.querySelectorAll('.demo-item').forEach(btn => {
         demoVideo.poster = btn.dataset.poster;
         demoVideo.src = btn.dataset.video;
         document.getElementById('demoNow').textContent = btn.dataset.title;
+        setDemoPage(btn.dataset.video);
         demoVideo.play().catch(() => {});
     });
+});
+function setDemoPage(videoPath) {
+    const slug = videoPath.replace(/^videos\//, '').replace(/\.mp4$/, '');
+    document.getElementById('demoOpen').href = 'watch/' + slug + '.html';
+}
+document.getElementById('demoCopy').addEventListener('click', () => {
+    const url = new URL(document.getElementById('demoOpen').getAttribute('href'), location.href).href;
+    const done = () => showNotification('✓ Link copied');
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(done, () => prompt('Copy this link', url));
+    else prompt('Copy this link', url);
 });
 
 // ── LIGHTBOX ──
@@ -1320,6 +1339,9 @@ document.getElementById('demoForm').addEventListener('submit', function(e) {
 
 // ── INIT ──
 showSlide(0); updateCounter(); updateProgress(); updateNav();
+// Shareable deep links: index.html#videos opens the video slide, index.html#demo opens the demo form.
+if (location.hash === '#videos') showSlide(2);
+if (location.hash === '#demo') setTimeout(openDemoModal, 300);
 </script>
 </body>
 </html>
