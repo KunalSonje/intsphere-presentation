@@ -563,6 +563,23 @@ body {
     .cta-box { padding: 1.75rem 1.25rem; }
     .hero-h1 { font-size: 1.4rem; }
 }
+
+/* ── VIDEO SLIDE ── */
+.demo-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(250px, 1fr); gap: 1.5rem; align-items: start; }
+.demo-video-zone { margin: 0; }
+.demo-video-zone video { display: block; width: 100%; max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px); aspect-ratio: 16 / 9; background: #0f172a; border-radius: 16px; box-shadow: var(--shadow-lg); object-fit: contain; }
+.demo-now { margin-top: 0.7rem; font-size: 0.85rem; color: var(--text-muted); }
+.demo-now strong { color: var(--heading); }
+.demo-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.demo-item { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; width: 100%; font: inherit; color: var(--text); background: #fff; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 0.7rem 0.9rem; cursor: pointer; box-shadow: var(--shadow-sm); transition: border-color .15s, background .15s, transform .15s; }
+.demo-item:hover { border-color: var(--primary); transform: translateY(-1px); }
+.demo-item.active { border-color: var(--primary); background: var(--primary-light); }
+.demo-item-title { font-weight: 700; color: var(--heading); font-size: 0.92rem; display: flex; align-items: center; gap: 8px; }
+.demo-item-title i { color: var(--primary); width: 16px; text-align: center; }
+.demo-item-time { margin-left: auto; font-weight: 600; font-size: 0.78rem; color: var(--primary-dark); background: rgba(8,145,178,0.1); border-radius: 999px; padding: 0.1rem 0.55rem; }
+.demo-item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+.demo-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+@media(max-width:900px) { .demo-layout { grid-template-columns: 1fr; } .demo-video-zone video { max-height: none; } }
 </style>
 </head>
 <body>
@@ -579,29 +596,30 @@ body {
     <ul>
         <li><a href="#" data-slide="0" class="nav-link">Home</a></li>
         <li><a href="#" data-slide="1" class="nav-link">Introducing IntForge</a></li>
-        <li><a href="#" data-slide="2" class="nav-link">Beyond the Console</a></li>
-        <li><a href="#" data-slide="3" class="nav-link">The Full Menu</a></li>
-        <li><a href="#" data-slide="4" class="nav-link">Dashboard</a></li>
-        <li><a href="#" data-slide="5" class="nav-link">Design &amp; Explore</a></li>
-        <li><a href="#" data-slide="6" class="nav-link">Document &amp; Generate</a></li>
-        <li><a href="#" data-slide="7" class="nav-link">Monitoring</a></li>
-        <li><a href="#" data-slide="8" class="nav-link">Diagnose in Bulk</a></li>
-        <li><a href="#" data-slide="9" class="nav-link">Operations</a></li>
-        <li><a href="#" data-slide="10" class="nav-link">Fusion &amp; IDCS</a></li>
-        <li><a href="#" data-slide="11" class="nav-link">FusionConnect</a></li>
-        <li><a href="#" data-slide="12" class="nav-link">AI-Powered Solutions</a></li>
-        <li><a href="#" data-slide="13" class="nav-link">Developer Tools</a></li>
-        <li><a href="#" data-slide="14" class="nav-link">Governance &amp; Admin</a></li>
-        <li><a href="#" data-slide="15" class="nav-link">Key Benefits</a></li>
-        <li><a href="#" data-slide="16" class="nav-link">The IntForge Difference</a></li>
-        <li><a href="#" data-slide="17" class="nav-link">Get Started</a></li>
-        <li><a href="#" data-slide="18" class="nav-link">Contact Us</a></li>
+        <li><a href="#" data-slide="2" class="nav-link">See It in Action</a></li>
+        <li><a href="#" data-slide="3" class="nav-link">Current State vs IntForge</a></li>
+        <li><a href="#" data-slide="4" class="nav-link">The Full Menu</a></li>
+        <li><a href="#" data-slide="5" class="nav-link">Dashboard</a></li>
+        <li><a href="#" data-slide="6" class="nav-link">Design &amp; Explore</a></li>
+        <li><a href="#" data-slide="7" class="nav-link">Document &amp; Generate</a></li>
+        <li><a href="#" data-slide="8" class="nav-link">Monitoring</a></li>
+        <li><a href="#" data-slide="9" class="nav-link">Diagnose in Bulk</a></li>
+        <li><a href="#" data-slide="10" class="nav-link">Operations</a></li>
+        <li><a href="#" data-slide="11" class="nav-link">Fusion &amp; IDCS</a></li>
+        <li><a href="#" data-slide="12" class="nav-link">FusionConnect</a></li>
+        <li><a href="#" data-slide="13" class="nav-link">AI-Powered Solutions</a></li>
+        <li><a href="#" data-slide="14" class="nav-link">Developer Tools</a></li>
+        <li><a href="#" data-slide="15" class="nav-link">Governance &amp; Admin</a></li>
+        <li><a href="#" data-slide="16" class="nav-link">Business Outcomes</a></li>
+        <li><a href="#" data-slide="17" class="nav-link">The IntForge Difference</a></li>
+        <li><a href="#" data-slide="18" class="nav-link">Get Started</a></li>
+        <li><a href="#" data-slide="19" class="nav-link">Contact Us</a></li>
     </ul>
 </div>
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- Counter & Progress -->
-<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">19</span></div>
+<div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">20</span></div>
 <div class="progress-bar" id="progressBar"></div>
 <div class="swipe-hint">← Swipe to navigate →</div>
 
@@ -655,11 +673,44 @@ body {
                     <div class="section-label"><i class="fas fa-rocket"></i> An IntSphere Product</div>
                     <div class="slide-title">Introducing IntForge</div>
                     <p class="slide-subtitle">Built to simplify OIC activities, from monitoring and diagnosis to bulk downloads, operations, documentation and Fusion checks &mdash; in one workspace for OIC, Fusion, IDCS and VBCS teams.</p>
+                    <p class="slide-subtitle" style="margin-bottom:0.6rem;">It also includes the <strong>OIC Agent</strong>: ask OIC in plain language about runtime instances, errors, schedules, agents or an integration&rsquo;s flow design. It calls OIC for you and answers from real data, read-only.</p>
                     <p class="intro-hint"><i class="fas fa-search-plus"></i> Click the diagram to enlarge it.</p>
                 </div>
                 <figure class="intro-figure">
                     <img src="IntForgeByIntSphere.png" alt="IntForge by IntSphere: OIC, Fusion, IDCS and VBCS feed one workspace with monitoring, bulk diagnosis and operations, automatic documentation, Fusion and IDCS tools, an AI assistant, file server, IAR comparison, bulk export and call graph analysis, with governance on top, delivering one place to monitor, visual insights and hours turned into minutes." loading="lazy">
                 </figure>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SLIDE 2a: SEE IT IN ACTION (VIDEOS) ── -->
+    <div class="slide">
+        <div class="slide-header">
+            <div class="slide-header-logo">
+                <img src="Logo.png" onerror="this.style.display='none'">
+                <span class="slide-header-brand">IntForge</span>
+            </div>
+            <span class="slide-header-title">See It in Action</span>
+        </div>
+        <div class="slide-body">
+            <div class="section-label"><i class="fas fa-play-circle"></i> Product Videos</div>
+            <div class="slide-title">See IntForge in Action</div>
+            <p class="slide-subtitle">Start with the short overview, or pick a longer walkthrough. Each video has a voice-over and chapters you can seek through.</p>
+            <div class="demo-layout">
+                <figure class="demo-video-zone">
+                    <video id="demoVideo" controls preload="metadata" playsinline poster="videos/overview-2min.jpg" src="videos/overview-2min.mp4">Your browser does not support embedded video.</video>
+                    <figcaption class="demo-now">Now showing: <strong id="demoNow">Overview in 2 minutes</strong></figcaption>
+                </figure>
+                <div>
+                    <div class="demo-list" id="demoList">
+                        <button type="button" class="demo-item active" data-video="videos/overview-2min.mp4" data-poster="videos/overview-2min.jpg" data-title="Overview in 2 minutes"><span class="demo-item-title"><i class="fas fa-bolt"></i>Overview in 2 minutes<span class="demo-item-time">1:54</span></span><span class="demo-item-desc">The quick tour: what IntForge solves and how it works.</span></button>
+                        <button type="button" class="demo-item" data-video="videos/overview-3min.mp4" data-poster="videos/overview-3min.jpg" data-title="Overview in 3 minutes"><span class="demo-item-title"><i class="fas fa-binoculars"></i>Overview in 3 minutes<span class="demo-item-time">3:43</span></span><span class="demo-item-desc">A fuller tour: monitoring, scheduling, design, error analysis, and Fusion and IDCS checks.</span></button>
+                        <button type="button" class="demo-item" data-video="videos/part1-monitor-schedule-design.mp4" data-poster="videos/part1-monitor-schedule-design.jpg" data-title="Part 1: Monitor, schedule and design"><span class="demo-item-title"><i class="fas fa-chart-line"></i>Part 1: Monitor, schedule and design<span class="demo-item-time">13:31</span></span><span class="demo-item-desc">Monitor runs and errors, scheduled integrations, audit records, mapping, and the Fusion and IDCS tools.</span></button>
+                        <button type="button" class="demo-item" data-video="videos/part2-build-operate-extend.mp4" data-poster="videos/part2-build-operate-extend.jpg" data-title="Part 2: Build, operate and extend"><span class="demo-item-title"><i class="fas fa-tools"></i>Part 2: Build, operate and extend<span class="demo-item-time">13:56</span></span><span class="demo-item-desc">Call Graph, compare versions, TDDs and release notes, Swagger, flow diagrams and bulk operations.</span></button>
+                        <button type="button" class="demo-item" data-video="videos/vision-and-ai.mp4" data-poster="videos/vision-and-ai.jpg" data-title="Vision and AI"><span class="demo-item-title"><i class="fas fa-brain"></i>Vision and AI<span class="demo-item-time">9:21</span></span><span class="demo-item-desc">What we are building, the problems it solves, and how AI helps at every step.</span></button>
+                    </div>
+                    <p class="demo-note">Demo data throughout. AI answers shown are sample text.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -671,13 +722,13 @@ body {
                 <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
-            <span class="slide-header-title">Beyond the Console</span>
+            <span class="slide-header-title">Current State vs IntForge</span>
         </div>
         <div class="slide-body">
             <div class="section-label"><i class="fas fa-layer-group"></i> The Differentiator</div>
-            <div class="slide-title">OIC Gives You the Data. IntForge Adds the Insight.</div>
-            <p class="slide-subtitle">Certificates, agents and monitoring are already in OIC. Here is what IntForge does on top of them.</p>
-            <table class="compare-table"><thead><tr><th>Area</th><th>What OIC gives you</th><th>What IntForge adds</th></tr></thead><tbody><tr><td class="ct-area"><i class="fas fa-chart-line"></i> Monitoring</td><td class="ct-oic">Run counts and instance lists, one integration at a time.</td><td class="ct-forge">A <strong>health score</strong> per integration (Healthy, Warning, Critical) with the critical ones first. Monitor <strong>a chosen set</strong> by integration, version, time window and error threshold, or by business functionality.</td></tr><tr><td class="ct-area"><i class="fas fa-life-ring"></i> Error resolution</td><td class="ct-oic">Errors listed per instance; follow-up happens outside OIC.</td><td class="ct-forge">From the error row: <strong>multi-model AI analysis</strong> to debug, <strong>email</strong> the failed instance details, <strong>create a ticket</strong> or <strong>message Teams</strong> &mdash; everyone coordinating from one place.</td></tr><tr><td class="ct-area"><i class="fas fa-search-plus"></i> Instance analysis</td><td class="ct-oic">Instances listed and opened individually.</td><td class="ct-forge">Performance and errors across <strong>multiple graphs</strong>, with filters by duration, record count and tracking variables.</td></tr><tr><td class="ct-area"><i class="fas fa-download"></i> Logs</td><td class="ct-oic">Activity stream of one instance at a time.</td><td class="ct-forge">Select <strong>many integrations</strong> and download all their instance logs in <strong>one ZIP</strong>, search across them, and have <strong>AI explain the log</strong>.</td></tr><tr><td class="ct-area"><i class="fas fa-bolt"></i> Operations</td><td class="ct-oic">Activate, deactivate or trace one integration at a time.</td><td class="ct-forge">Bulk activate, deactivate and trace; see which integrations have not run in 32 days; manage integrations during a Fusion outage.</td></tr><tr><td class="ct-area"><i class="fas fa-file-alt"></i> Documentation</td><td class="ct-oic">Written by hand after the fact.</td><td class="ct-forge">Technical design documents, release notes, call graphs, Swagger docs and Postman collections generated from the live instance.</td></tr><tr><td class="ct-area"><i class="fas fa-plug"></i> Fusion data and reports</td><td class="ct-oic">Fusion data and BI Publisher reports are reached in Fusion&rsquo;s own tools, outside OIC.</td><td class="ct-forge"><span class="chip chip-teal">FusionConnect</span> A <strong>SQL editor</strong> with autocomplete and bind variables, a <strong>schema browser</strong>,<strong>AI powered query assistant</strong>, and <strong>BIP reports you register once and run from the platform</strong> &mdash; including the reports you use for monitoring.</td></tr><tr><td class="ct-area"><i class="fas fa-th-large"></i> Dashboard and certificates</td><td class="ct-oic">Separate pages for emails, agents and certificates.</td><td class="ct-forge">Emails sent, suppressed emails and agents as one visual dashboard. Certificates colour-coded: <span class="chip chip-red">expired in red</span> <span class="chip chip-amber">expiring within 30 days in amber</span> <span class="chip chip-green">valid in green</span>.</td></tr></tbody></table>
+            <div class="slide-title">Current State vs IntForge</div>
+            <p class="slide-subtitle">OIC gives you the data. IntForge adds the insight, the scale and the visuals to act on it.</p>
+            <table class="compare-table"><thead><tr><th>Area</th><th>Current state in OIC</th><th>What IntForge adds</th></tr></thead><tbody><tr><td class="ct-area"><i class="fas fa-chart-line"></i> Monitoring</td><td class="ct-oic">Run counts and instance lists, one integration at a time</td><td class="ct-forge">Monitor and visualize the integrations you choose, by version, time window, error threshold or business function, with runs, errors and trends shown as clear charts</td></tr><tr><td class="ct-area"><i class="fas fa-robot"></i> Asking questions of OIC</td><td class="ct-oic">Navigate console pages and filters to find instances, errors and schedules</td><td class="ct-forge"><strong>OIC Agent:</strong> ask in plain language about runtime instances, errors, schedules, agents or an integration&rsquo;s flow design. It calls OIC and answers from real data, read-only</td></tr><tr><td class="ct-area"><i class="fas fa-th-large"></i> Dashboard and certificates</td><td class="ct-oic">Separate pages for emails, agents and certificates</td><td class="ct-forge">One visual dashboard for emails, suppressed emails and agents. Certificates colour-coded: <span class="chip chip-red">expired</span> <span class="chip chip-amber">expiring in 30 days</span> <span class="chip chip-green">valid</span></td></tr><tr><td class="ct-area"><i class="fas fa-search-plus"></i> Instance analysis</td><td class="ct-oic">Instances listed and opened individually</td><td class="ct-forge">Performance and errors across <strong>multiple graphs</strong>, filtered by duration, record count and tracking variables</td></tr><tr><td class="ct-area"><i class="fas fa-life-ring"></i> Error resolution</td><td class="ct-oic">Errors listed per instance; follow-up happens outside OIC</td><td class="ct-forge">From the error row: <strong>multi-model AI analysis</strong>, email the failed instance, create a ticket or message Teams</td></tr><tr><td class="ct-area"><i class="fas fa-download"></i> Logs</td><td class="ct-oic">Activity stream of one instance at a time</td><td class="ct-forge">Logs of <strong>many integrations in one ZIP</strong>, searchable, with <strong>AI explaining the log</strong></td></tr><tr><td class="ct-area"><i class="fas fa-bolt"></i> Operations</td><td class="ct-oic">Activate, deactivate or trace one integration at a time</td><td class="ct-forge">Bulk activate, deactivate and trace; integrations not run in 32 days; Fusion outage control</td></tr><tr><td class="ct-area"><i class="fas fa-project-diagram"></i> Dependencies</td><td class="ct-oic">One integration viewed at a time</td><td class="ct-forge"><strong>Call graph:</strong> who calls each integration and the full chain A &rarr; B &rarr; C &rarr; D, with AI analysis of the whole chain</td></tr><tr><td class="ct-area"><i class="fas fa-file-alt"></i> Documentation</td><td class="ct-oic">Written by hand after the fact</td><td class="ct-forge">TDDs, release notes, Swagger and Postman generated from the live instance</td></tr><tr><td class="ct-area"><i class="fas fa-plug"></i> Fusion data and reports</td><td class="ct-oic">Reached in Fusion&rsquo;s own tools, outside OIC</td><td class="ct-forge"><strong>FusionConnect:</strong> SQL editor, schema browser, AI query assistant and BIP reports run from the platform</td></tr></tbody></table>
         </div>
     </div>
 
@@ -967,19 +1018,19 @@ body {
                 <img src="Logo.png" onerror="this.style.display='none'">
                 <span class="slide-header-brand">IntForge</span>
             </div>
-            <span class="slide-header-title">Key Benefits</span>
+            <span class="slide-header-title">Business Outcomes</span>
         </div>
         <div class="slide-body">
-            <div class="section-label"><i class="fas fa-star"></i> Key Benefits</div>
-            <div class="slide-title">Why Teams Choose IntForge</div>
+            <div class="section-label"><i class="fas fa-star"></i> Why IntForge</div>
+            <div class="slide-title">Business Outcomes</div>
             <p class="slide-subtitle">Built for Oracle OIC &amp; VBCS teams who need speed, accuracy, and visibility without compromise.</p>
             <div class="card-grid cols-3">
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bell"></i></div><h3>Problems Find You</h3><p>Colour-coded certificates, red alert cards and health scores surface what needs attention before users report it.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>Hours Become Minutes</h3><p>Bulk activation, tracing and log download, and generated documents, replace repeated clicking and writing.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bullseye"></i></div><h3>Documents That Are Right</h3><p>TDDs, release notes and call graphs are built from the live instance, so they match what is deployed.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-users"></i></div><h3>Better Collaboration</h3><p>Assign errors, alert Teams, raise tickets and share generated documents.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Friendly</h3><p>Check alerts and manage OIC operations on the go from any device.</p></div>
-                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-shield-alt"></i></div><h3>Lower Risk</h3><p>Per-user access, an audit trail, and bulk actions you can verify afterwards.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-layer-group"></i></div><h3>One Place to Monitor</h3><p>OIC, Fusion, IDCS and VBCS in a single workspace, so leaders and teams share the same view.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-chart-pie"></i></div><h3>Visual Insights for Quicker Action</h3><p>Health scores, charts and colour-coded certificates show where attention is needed at a glance.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-bolt"></i></div><h3>Hours Become Minutes</h3><p>Bulk activation, tracing, log download and exports replace repeated manual work.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-file-alt"></i></div><h3>Documentation You Can Trust</h3><p>Design documents and release notes come from the live instance. IntSphere reports up to 70% less documentation effort with AI-generated TDDs.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-project-diagram"></i></div><h3>Change with Confidence</h3><p>The call graph shows the full chain of dependent integrations before anything is changed.</p></div>
+                <div class="deck-card"><div class="deck-card-icon"><i class="fas fa-user-shield"></i></div><h3>Governed Access</h3><p>Per-user, per-instance permissions, feature-level switches and an audit trail of who did what.</p></div>
             </div>
         </div>
     </div>
@@ -999,8 +1050,8 @@ body {
             <p class="slide-subtitle">OIC teams using IntForge report significant improvements across operations, documentation, and delivery speed.</p>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Reduction in documentation effort with AI-powered TDD generation</div>
+                    <div class="stat-number">Up to 70%</div>
+                    <div class="stat-label">Less documentation effort with AI-generated TDDs, as reported by IntSphere</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">4</div>
@@ -1167,6 +1218,7 @@ function showSlide(n, dir = 1) {
     const outClass = dir === 1 ? 'slide-out-left' : 'slide-out-right';
     if (slides[currentSlide]) slides[currentSlide].classList.add(outClass);
     setTimeout(() => {
+        document.querySelectorAll('video').forEach(v => v.pause());
         slides.forEach(s => s.classList.remove('active','slide-out-left','slide-out-right'));
         currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
@@ -1184,16 +1236,18 @@ setTimeout(hideSwipeHint, 4000);
 function changeSlide(dir) { hideSwipeHint(); showSlide(currentSlide + dir, dir); }
 
 document.addEventListener('keydown', e => {
+    if (e.target && e.target.tagName === 'VIDEO') return; // arrows seek inside the player
     if (e.key === 'ArrowLeft')  changeSlide(-1);
     if (e.key === 'ArrowRight') changeSlide(1);
 });
 
 const pres = document.getElementById('presentation');
-pres.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; });
+pres.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; swipeBlocked = !!e.target.closest('.demo-video-zone'); });
 pres.addEventListener('touchend',   e => { endX = e.changedTouches[0].screenX; doSwipe(); });
-pres.addEventListener('mousedown',  e => { startX = e.screenX; });
+pres.addEventListener('mousedown',  e => { startX = e.screenX; swipeBlocked = !!e.target.closest('.demo-video-zone'); });
 pres.addEventListener('mouseup',    e => { endX = e.screenX; doSwipe(); });
-function doSwipe() { const d = startX - endX; if (Math.abs(d) > SWIPE) changeSlide(d > 0 ? 1 : -1); }
+let swipeBlocked = false; // dragging the video's seek bar must not turn the slide
+function doSwipe() { if (swipeBlocked) return; const d = startX - endX; if (Math.abs(d) > SWIPE) changeSlide(d > 0 ? 1 : -1); }
 
 // ── HAMBURGER ──
 const hbg = document.getElementById('hamburgerMenu');
@@ -1207,6 +1261,18 @@ document.querySelectorAll('.mobile-nav .nav-link').forEach(l => {
         hideSwipeHint();
         showSlide(parseInt(l.dataset.slide));
         hbg.classList.remove('active'); mNav.classList.remove('active'); overlay.classList.remove('active');
+    });
+});
+
+// ── VIDEO PLAYLIST ──
+const demoVideo = document.getElementById('demoVideo');
+document.querySelectorAll('.demo-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.demo-item').forEach(b => b.classList.toggle('active', b === btn));
+        demoVideo.poster = btn.dataset.poster;
+        demoVideo.src = btn.dataset.video;
+        document.getElementById('demoNow').textContent = btn.dataset.title;
+        demoVideo.play().catch(() => {});
     });
 });
 
