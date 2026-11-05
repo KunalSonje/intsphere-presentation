@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../Logo.png">
+<title>IntForge overview | IntForge by IntSphere</title>
+<meta name="description" content="A four-minute tour of IntForge by IntSphere: a short clip and one line of narration for each feature, from monitoring and diagnosis to design documents, AI analysis and the Fusion and IDCS checks.">
+<link rel="canonical" href="https://presentation.intsphere.com/watch/overview-4min.html">
+<meta property="og:site_name" content="IntForge by IntSphere">
+<meta property="og:title" content="IntForge overview | IntForge by IntSphere">
+<meta property="og:description" content="A four-minute tour of IntForge by IntSphere: a short clip and one line of narration for each feature, from monitoring and diagnosis to design documents, AI analysis and the Fusion and IDCS checks.">
+<meta property="og:url" content="https://presentation.intsphere.com/watch/overview-4min.html">
+<meta property="og:image" content="https://presentation.intsphere.com/videos/overview-4min.jpg">
+<meta property="og:type" content="video.other">
+<meta property="og:video" content="https://presentation.intsphere.com/videos/overview-4min.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IntForge overview | IntForge by IntSphere">
+<meta name="twitter:description" content="A four-minute tour of IntForge by IntSphere: a short clip and one line of narration for each feature, from monitoring and diagnosis to design documents, AI analysis and the Fusion and IDCS checks.">
+<meta name="twitter:image" content="https://presentation.intsphere.com/videos/overview-4min.jpg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#0891b2;--primary-dark:#0c5460;--primary-light:#e0f7fa;--grad:linear-gradient(135deg,#1a2d42 0%,#2d4563 40%,#0891b2 100%);--heading:#0f172a;--text:#334155;--muted:#64748b;--bg:#f8fafc;--border:#e2e8f0;--shadow:0 8px 24px rgba(0,0,0,.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+.top{background:var(--grad);color:#fff}
+.top-in{max-width:1180px;margin:0 auto;padding:.8rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.6rem;color:#67e8f9;font-family:'Outfit',sans-serif;font-weight:800;font-size:1.25rem;text-decoration:none}
+.brand img{width:30px;height:30px}.brand small{display:block;color:#cbd5e1;font:500 .68rem 'Inter',sans-serif;letter-spacing:.04em}
+.top nav{margin-left:auto;display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid transparent;border-radius:999px;padding:.5rem 1rem;font:600 .85rem 'Inter',sans-serif;cursor:pointer;text-decoration:none!important;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-white{background:#fff;color:var(--primary-dark)}.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-main{background:var(--primary);color:#fff}.btn-line{background:#fff;color:var(--primary-dark);border-color:var(--border)}
+main{max-width:1180px;margin:0 auto;padding:1.6rem 1.25rem 3rem}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--heading);line-height:1.2;margin:.2rem 0 .4rem}
+.label{display:inline-flex;align-items:center;gap:.4rem;font:700 .72rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-dark);background:var(--primary-light);border-radius:999px;padding:.25rem .75rem}
+.lead{color:var(--muted);max-width:760px;margin-bottom:1.2rem}
+.watch{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(250px,1fr);gap:1.4rem;align-items:start}
+video{display:block;width:100%;aspect-ratio:16/9;background:#0f172a;border-radius:16px;box-shadow:var(--shadow);object-fit:contain}
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin:.9rem 0}
+.panel{background:#fff;border:1px solid var(--border);border-radius:14px;padding:.9rem 1rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.panel h2{font:700 .8rem 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.chap{list-style:none;max-height:min(62vh,520px);overflow:auto}
+.chap button{display:flex;gap:.7rem;width:100%;text-align:left;font:inherit;font-size:.88rem;color:var(--text);background:none;border:0;border-radius:8px;padding:.4rem .5rem;cursor:pointer}
+.chap button:hover{background:var(--bg)}.chap button.on{background:var(--primary-light);color:var(--primary-dark);font-weight:600}
+.chap time{font-variant-numeric:tabular-nums;color:var(--primary);font-weight:600;min-width:2.9rem}
+.note{font-size:.78rem;color:var(--muted);margin-top:.7rem}
+.more{margin-top:2rem}.more h2{font-family:'Outfit',sans-serif;font-size:1.2rem;color:var(--heading);margin-bottom:.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04);color:inherit;text-decoration:none!important;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.thumb{position:relative;aspect-ratio:16/9;background:#0f172a}.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb span{position:absolute;right:.5rem;bottom:.5rem;background:rgba(15,23,42,.85);color:#fff;font:600 .75rem 'Inter',sans-serif;border-radius:6px;padding:.1rem .45rem}
+.card-b{padding:.75rem .9rem 1rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+.card-b strong{color:var(--heading);font-size:.95rem}.card-b p{font-size:.82rem;color:var(--muted)}
+.card-actions{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 .9rem 1rem}
+.cta{margin-top:2rem;background:var(--grad);color:#fff;border-radius:18px;padding:1.4rem 1.5rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.cta h2{font-family:'Outfit',sans-serif;font-size:1.3rem;flex:1;min-width:230px}.cta p{color:#cbd5e1;font:400 .9rem 'Inter',sans-serif;margin-top:.2rem}
+footer{max-width:1180px;margin:0 auto;padding:0 1.25rem 2rem;color:var(--muted);font-size:.8rem}
+.toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);background:#0f172a;color:#fff;padding:.55rem 1rem;border-radius:999px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}
+@media(max-width:900px){.watch{grid-template-columns:1fr}.chap{max-height:none}.top nav{margin-left:0}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="index.html"><img src="../Logo.png" alt="" onerror="this.style.display='none'"><span>IntForge<small>by IntSphere</small></span></a>
+  <nav><a class="btn btn-ghost" href="index.html"><i class="fas fa-th-large"></i> All videos</a><a class="btn btn-ghost" href="../index.html"><i class="fas fa-desktop"></i> Full presentation</a><a class="btn btn-white" href="../index.html#demo"><i class="fas fa-paper-plane"></i> Schedule a demo</a></nav>
+</div></header>
+
+<main>
+  <span class="label"><i class="fas fa-play-circle"></i> IntForge video &middot; 4:07</span>
+  <h1>IntForge overview</h1>
+  <p class="lead">A four-minute tour of IntForge by IntSphere: a short clip and one line of narration for each feature, from monitoring and diagnosis to design documents, AI analysis and the Fusion and IDCS checks.</p>
+  <div class="watch">
+    <div>
+      <video id="v" controls preload="metadata" playsinline poster="../videos/overview-4min.jpg" src="../videos/overview-4min.mp4">Your browser does not support embedded video.</video>
+      <div class="actions">
+        <button class="btn btn-main" type="button" id="copy"><i class="fas fa-link"></i> Copy link</button>
+        <button class="btn btn-line" type="button" id="copyAt"><i class="fas fa-clock"></i> Copy link at this moment</button>
+        <a class="btn btn-line" href="mailto:?subject=IntForge%20overview%20%7C%20IntForge&amp;body=Watch%3A%20https://presentation.intsphere.com/watch/overview-4min.html"><i class="fas fa-envelope"></i> Email it</a>
+      </div>
+    </div>
+    <aside class="panel"><h2>Chapters</h2><ul class="chap" id="chap"><li><button type="button" data-t="0"><time>00:00</time><span>Introduction</span></button></li><li><button type="button" data-t="8"><time>00:08</time><span>Dashboard</span></button></li><li><button type="button" data-t="16"><time>00:16</time><span>Scheduled Integrations</span></button></li><li><button type="button" data-t="24"><time>00:24</time><span>Monitor Integrations</span></button></li><li><button type="button" data-t="32"><time>00:32</time><span>Failed instances</span></button></li><li><button type="button" data-t="43"><time>00:43</time><span>AI error analysis</span></button></li><li><button type="button" data-t="49"><time>00:49</time><span>Integration Mapper</span></button></li><li><button type="button" data-t="58"><time>00:58</time><span>Integration Purpose</span></button></li><li><button type="button" data-t="67"><time>01:07</time><span>Download Logs</span></button></li><li><button type="button" data-t="74"><time>01:14</time><span>Last Run</span></button></li><li><button type="button" data-t="80"><time>01:20</time><span>Bulk Tracing</span></button></li><li><button type="button" data-t="87"><time>01:27</time><span>OIC Design Time</span></button></li><li><button type="button" data-t="95"><time>01:35</time><span>Call Graph</span></button></li><li><button type="button" data-t="104"><time>01:44</time><span>Endpoint search</span></button></li><li><button type="button" data-t="112"><time>01:52</time><span>Flow Explainer</span></button></li><li><button type="button" data-t="118"><time>01:58</time><span>Generate TDD</span></button></li><li><button type="button" data-t="126"><time>02:06</time><span>TDD as Word</span></button></li><li><button type="button" data-t="132"><time>02:12</time><span>Release Notes</span></button></li><li><button type="button" data-t="140"><time>02:20</time><span>Release Notes as Word</span></button></li><li><button type="button" data-t="144"><time>02:24</time><span>Compare Integrations</span></button></li><li><button type="button" data-t="151"><time>02:31</time><span>AI explains differences</span></button></li><li><button type="button" data-t="158"><time>02:38</time><span>Integration Analyzer</span></button></li><li><button type="button" data-t="166"><time>02:46</time><span>OIC Agent</span></button></li><li><button type="button" data-t="174"><time>02:54</time><span>Compare FBDI</span></button></li><li><button type="button" data-t="180"><time>03:00</time><span>Reports History</span></button></li><li><button type="button" data-t="187"><time>03:07</time><span>Fusion Users and roles</span></button></li><li><button type="button" data-t="195"><time>03:15</time><span>Compare users, same environment</span></button></li><li><button type="button" data-t="203"><time>03:23</time><span>Compare across environments</span></button></li><li><button type="button" data-t="210"><time>03:30</time><span>Fusion Events</span></button></li><li><button type="button" data-t="217"><time>03:37</time><span>ESS Monitoring</span></button></li><li><button type="button" data-t="225"><time>03:45</time><span>IDCS Users and roles</span></button></li><li><button type="button" data-t="234"><time>03:54</time><span>Governed</span></button></li><li><button type="button" data-t="240"><time>04:00</time><span>Get in touch</span></button></li></ul><p class="note">Click a chapter to jump to it.</p></aside>
+  </div>
+  <section class="more"><h2>More IntForge videos</h2><div class="grid"><a class="card" href="part1-monitor-schedule-design.html"><div class="thumb"><img src="../videos/part1-monitor-schedule-design.jpg" alt="" loading="lazy"><span>13:31</span></div><div class="card-b"><strong><i class="fas fa-chart-line" style="color:var(--primary);margin-right:.4rem"></i>Part 1: Monitor, schedule and design</strong><p>Monitor runs and errors, scheduled integrations, audit records, mapping, and the Fusion and IDCS tools.</p></div></a><a class="card" href="part2-build-operate-extend.html"><div class="thumb"><img src="../videos/part2-build-operate-extend.jpg" alt="" loading="lazy"><span>13:18</span></div><div class="card-b"><strong><i class="fas fa-tools" style="color:var(--primary);margin-right:.4rem"></i>Part 2: Build, operate and extend</strong><p>Call Graph, compare versions, TDDs and release notes, Swagger, flow diagrams and bulk operations.</p></div></a><a class="card" href="vision-and-ai.html"><div class="thumb"><img src="../videos/vision-and-ai.jpg" alt="" loading="lazy"><span>9:21</span></div><div class="card-b"><strong><i class="fas fa-brain" style="color:var(--primary);margin-right:.4rem"></i>Vision and AI</strong><p>What we are building, the problems it solves, and how AI helps at every step.</p></div></a></div></section>
+  <section class="cta"><div style="flex:1;min-width:230px"><h2 style="font-family:'Outfit',sans-serif;font-size:1.3rem">See IntForge on your own OIC instance.</h2><p>Book a personalised demo, or write to <a href="mailto:connect@intsphere.com" style="color:#67e8f9">connect@intsphere.com</a>.</p></div><a class="btn btn-white" href="../index.html#demo"><i class="fas fa-paper-plane"></i> Schedule a demo</a><a class="btn btn-ghost" href="../index.html"><i class="fas fa-desktop"></i> View the presentation</a></section>
+</main>
+<script>
+(function(){
+var v=document.getElementById('v'),btns=[].slice.call(document.querySelectorAll('#chap button')),base=location.origin+location.pathname;
+function parseT(){var m=location.hash.match(/t=(\d+)/);return m?parseInt(m[1],10):0}
+function mark(){var cur=0;btns.forEach(function(b,i){if(v.currentTime>=+b.dataset.t-0.3)cur=i});btns.forEach(function(b,i){b.classList.toggle('on',i===cur)})}
+btns.forEach(function(b){b.addEventListener('click',function(){v.currentTime=+b.dataset.t;v.play().catch(function(){});history.replaceState(null,'','#t='+b.dataset.t)})});
+v.addEventListener('timeupdate',mark);
+v.addEventListener('loadedmetadata',function(){var t=parseT();if(t){v.currentTime=t}mark()});
+document.getElementById('copy').onclick=function(){copyText(base,'Link copied')};
+document.getElementById('copyAt').onclick=function(){var s=Math.floor(v.currentTime);copyText(base+'#t='+s,'Link copied, starts at '+Math.floor(s/60)+':'+('0'+(s%60)).slice(-2))};
+mark();
+})();
+</script>
+<footer>IntForge by IntSphere &middot; <a href="https://www.intsphere.com">www.intsphere.com</a> &middot; Demo data throughout; AI answers shown are sample text.</footer><div class="toast" id="toast">Link copied</div>
+<script>
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}
+function copyText(txt,msg){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(function(){toast(msg)},function(){fallback(txt,msg)})}else{fallback(txt,msg)}}
+function fallback(txt,msg){var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg)}catch(e){prompt('Copy this link',txt)}a.remove()}
+</script>
+</body></html>
